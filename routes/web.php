@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ModelHasRoleController;
 use App\Http\Controllers\ModelHasPermissionController;
+use App\Http\Controllers\OrderController;
 
 use App\Http\Controllers\CartController;
 
@@ -50,10 +51,23 @@ Route::resource('givepermissions', ModelHasPermissionController::class)->middlew
 
 
 
+/* -------------- Pedidos Rutas */
+Route::resource('orders', OrderController::class)->middleware('auth');
+Route::get('pedidos', function ()
+{
+    return view('pedidos');
+})->middleware('auth');
+
+
+
+
 //************************ Cart Routes */
 
 
 Route::get('/checkout', [CartController::class, 'checkOut'])->name('checkout');
+Route::get('/resumen', function (){
+    return view('resumen');
+})->name('resumen');
 
 Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');

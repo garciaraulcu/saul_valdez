@@ -16,11 +16,22 @@ class Orders extends Migration
         //
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->longtext('products');
+            $table->integer('total');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('lastname');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('street');
+            $table->string('num');
+            $table->string('colonia');
+            $table->string('city');
+            $table->string('state');
+            $table->string('postcode');
+            $table->string('country');
+            $table->string('paymentmethod');
+            $table->string('status');
             $table->timestamps();
         });
     }
