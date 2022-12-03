@@ -39,7 +39,6 @@
                                     
                                     <th>User Id</th>
                                     <th>Total</th>
-                                    <th>Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th>Paymentmethod</th>
@@ -53,11 +52,10 @@
                                     <tr>
                                         <td>#{{ ++$i }}</td>
                                         
-                                        <td>{{ $order->user_id }}</td>
-                                        <td>{{ $order->total }}</td>
-                                        <td>{{ $order->name }}</td>
+                                        <td>{{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : "No Existe" }}</td>
+                                        <td>$ {{ $order->total }} MXN</td>
                                         <td>{{ $order->phone }}</td>
-                                        <td>{{ $order->email }}</td>
+                                        <td>{{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->email : "No Existe" }}</td>
                                         <td>{{ $order->paymentmethod }}</td>
                                         <td>{{ $order->status }}</td>
 

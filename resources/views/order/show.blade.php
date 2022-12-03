@@ -22,18 +22,19 @@
                             </div>
                         </div>
 
-                        <div class="card-body" style="background-color: #f2f2f2">
+                        <div class="card-body" style="background-color: #fff">
                             <div class="form-group">
                                 <h1>Pedido: #{{ $order->id }}</h1>
+                                <!--<div class="form-group">
+                                    <h5>Total: <b>$ {{ $order->total }} MXN</b></h5>
+                                </div>-->
+                                <h6>{{ Carbon\Carbon::parse($order->created_at,'UTC')->timezone('America/Mexico_City')->isoFormat('LLLL') }}</h6>
                             </div>
                             <div class="form-group">
                                 <strong>Products:</strong>
                                 {!! $order->products !!}
                             </div>
-                            <div class="form-group float-right">
-                                <h5>Total: <b>$ {{ $order->total }} MXN</b></h5>
-                            </div>
-                            <br>
+
                                 <h5>User Information</h5>
                                 <div class="container">
                                     <div class="">
@@ -85,7 +86,7 @@
                                     </div>
                                 </div><br>
                             <div class="form-group">
-                                <strong>Paymentmethod:</strong>
+                                <strong>Forma de Pago:</strong>
                                 {{ $order->paymentmethod }}
                             </div>
                             <div class="form-group">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="cards">
-        @foreach (App\Models\Product::all() as $product)
+        @foreach (App\Product::all() as $product)
             <form action="{{ route('cart.store', $product->id) }}" method="POST" enctype="multipart/form-data">
 
                 @csrf
@@ -18,16 +18,23 @@
                             <h6>
                                 {{ $product->name }}
                             </h6>
+                        <small>{{ $product->cantidad }} Disponibles</small>
+                        
                         </a>
-                        <h6>{{ $product->type }}</h6>
+                        <br>
+                        <div style="text-align: center" >
+                        <h6 >{{ App\Categoria::find($product->category_id) ? App\Categoria::find($product->category_id)->name : "Null" }}</h6>
 
-                        <h4>
+                        </div>
+
+                        <h4 >
                             <span> ${{ $product->price }} MXN </span>
                         </h4>
                         <br>
 
                         <input type="hidden" value="{{ $product->id }}" name="id">
                         <input type="hidden" value="{{ $product->name }}" name="name">
+                        <input type="hidden" value="{{ $product->category_id }}" name="name">
                         <input type="hidden" value="{{ $product->price }}" name="price">
                         <input type="hidden" value="{{ $product->image }}" name="image">
                         <input type="hidden" value="1" name="quantity">

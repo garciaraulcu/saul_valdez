@@ -17,9 +17,9 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'price' =>$this->faker->numberBetween(25,90),
-            'type' =>$this->faker->word(),
+            'category_id' =>$this->faker->numberBetween(1,10),
+            'cantidad' =>$this->faker->numberBetween(20,90),
             'image' =>$this->faker->imageUrl($width = 640, $height = 480),
-            'download' =>Str::random(10),
             'info' =>$this->faker->text(),
             'image_dos' => $this->faker->imageUrl($width = 640, $height = 480),
             'image_tres' => $this->faker->imageUrl($width = 640, $height = 480),

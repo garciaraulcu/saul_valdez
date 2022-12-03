@@ -19,7 +19,7 @@
                 @foreach (App\Order::all()->sortByDesc('id') as $item)
                     <tr>
                         <td>#{{ $item->id }}</td>
-                        <td>{{ $item->name }} {{ $item->lastname }}</td>
+                        <td>{{ App\Models\User::find($item->user_id) ? App\Models\User::find($item->user_id)->name : "No Existe Usuario"}}</td>
                         <td>{{ $item->phone }}</td>
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>

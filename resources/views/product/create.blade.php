@@ -1,4 +1,3 @@
-@can('edit')
 @extends('layouts.app')
 
 @section('template_title')
@@ -17,7 +16,7 @@
                         <span class="card-title">Create Product</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('productos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('products.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('product.form')
@@ -29,4 +28,3 @@
         </div>
     </section>
 @endsection
-@endcan

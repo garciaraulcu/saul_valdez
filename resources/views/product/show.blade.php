@@ -1,4 +1,3 @@
-@can('show')
 @extends('layouts.app')
 
 @section('template_title')
@@ -15,7 +14,7 @@
                             <span class="card-title">Show Product</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('productos.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
                         </div>
                     </div>
 
@@ -30,16 +29,16 @@
                             {{ $product->price }}
                         </div>
                         <div class="form-group">
-                            <strong>Type:</strong>
-                            {{ $product->type }}
+                            <strong>Cantidad:</strong>
+                            {{ $product->cantidad }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Category Id:</strong>
+                            {{ $product->category_id }}
                         </div>
                         <div class="form-group">
                             <strong>Image:</strong>
-                            <img src="{{ $product->image }}" alt="{{ $product->image }}">
-                        </div>
-                        <div class="form-group">
-                            <strong>Download:</strong>
-                            {{ $product->download }}
+                            {{ $product->image }}
                         </div>
                         <div class="form-group">
                             <strong>Info:</strong>
@@ -64,11 +63,3 @@
         </div>
     </section>
 @endsection
-
-@else
-    @section('content')
-        <h1 style="text-align: center">
-            Se Requiere Permiso Madafakas
-        </h1>
-    @endsection
-@endcan

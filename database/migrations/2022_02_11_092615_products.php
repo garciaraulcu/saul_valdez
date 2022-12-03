@@ -16,14 +16,14 @@ class Products extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('price');
-            $table->string('type');
-            $table->string('image');
-            $table->string('download');
-            $table->text('info');
-            $table->string('image_dos');
-            $table->string('image_tres');
-            $table->string('image_cuatro');
+            $table->integer('price');
+            $table->integer('cantidad');
+            $table->integer('category_id');
+            $table->longtext('image');
+            $table->longtext('info');
+            $table->longtext('image_dos');
+            $table->longtext('image_tres');
+            $table->longtext('image_cuatro');
             
             $table->timestamps();
         });

@@ -28,11 +28,13 @@
     <br>
     <a href="/givepermissions">Asignar Permisos</a>
     <br>
-    <a href="/productos">Productos</a>
+    <a href="/products">Productos</a>
     <br>
     <a href="/pedidos">Pedidos</a>
     <br>
     <a href="/orders">Editar Pedidos</a>
+    <br>
+    <a href="/categorias">Categorias</a>
     @endcan
 
     @if (Auth::user()->hasRole('Admin'))

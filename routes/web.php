@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ModelHasRoleController;
 use App\Http\Controllers\ModelHasPermissionController;
 use App\Http\Controllers\OrderController;
@@ -35,9 +36,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('user', UserController::class);
 
 //----------------------------Productos
-Route::resource('productos', ProductController::class)->middleware('auth');
+Route::resource('products', ProductController::class)->middleware('auth');
 
-Route::get('/store', [App\Http\Controllers\ProductController::class, 'items']);
+Route::get('/store',  function ()
+{
+    return view('products');
+});
 
 //---------------Crear Roles
 Route::resource('roles', RoleController::class)->middleware('auth');
@@ -57,6 +61,10 @@ Route::get('pedidos', function ()
 {
     return view('pedidos');
 })->middleware('auth');
+
+/* -------------- Categorias Rutas */
+
+Route::resource('categorias', CategoriaController::class)->middleware('auth');
 
 
 

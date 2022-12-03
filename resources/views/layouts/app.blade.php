@@ -99,12 +99,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: #FFFFFF">
                     MySite.com
                 </a>
-                <a href="/store" class="navbar-brand " style="color: #FFFFFF">
-                    Tienda
-                </a>
-                <a href="/home" class="navbar-brand " style="color: #FFFFFF">
-                    Mi Perfil
-                </a>
+
                 <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" >
@@ -121,9 +116,19 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="{{ route('cart.list') }}" class=" btn" id="myBtn" style="color: #FFFFFF">
-                                <i style="font-size: 18px" class="bi bi-cart-fill"></i>
-                                {{ Cart::getTotalQuantity() }}
+                            <a href="{{ route('cart.list') }}"  class="text-black btn btn-warning  nav-link" id="myBtn" style="color: #FFFFFF">
+                               Cart <i  class="bi bi-cart-fill"></i>
+                                <b>{{ Cart::getTotalQuantity() }}</b>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/store" class="btn nav-link" style="color: #FFFFFF">
+                                Tienda
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/home" class="btn nav-link" style="color: #FFFFFF">
+                                Mi Perfil
                             </a>
                         </li>
                         @guest

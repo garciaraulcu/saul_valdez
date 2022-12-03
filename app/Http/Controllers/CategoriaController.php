@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Categoria;
 use Illuminate\Http\Request;
 
 /**
- * Class ProductController
+ * Class CategoriaController
  * @package App\Http\Controllers
  */
-class ProductController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate();
+        $categorias = Categoria::paginate();
 
-        return view('product.index', compact('products'))
-            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+        return view('categoria.index', compact('categorias'))
+            ->with('i', (request()->input('page', 1) - 1) * $categorias->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product = new Product();
-        return view('product.create', compact('product'));
+        $categoria = new Categoria();
+        return view('categoria.create', compact('categoria'));
     }
 
     /**
@@ -43,12 +43,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Product::$rules);
+        request()->validate(Categoria::$rules);
 
-        $product = Product::create($request->all());
+        $categoria = Categoria::create($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product created successfully.');
+        return redirect()->route('categorias.index')
+            ->with('success', 'Categoria created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $categoria = Categoria::find($id);
 
-        return view('product.show', compact('product'));
+        return view('categoria.show', compact('categoria'));
     }
 
     /**
@@ -72,26 +72,26 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $categoria = Categoria::find($id);
 
-        return view('product.edit', compact('product'));
+        return view('categoria.edit', compact('categoria'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Product $product
+     * @param  Categoria $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Categoria $categoria)
     {
-        request()->validate(Product::$rules);
+        request()->validate(Categoria::$rules);
 
-        $product->update($request->all());
+        $categoria->update($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully');
+        return redirect()->route('categorias.index')
+            ->with('success', 'Categoria updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id)->delete();
+        $categoria = Categoria::find($id)->delete();
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product deleted successfully');
+        return redirect()->route('categorias.index')
+            ->with('success', 'Categoria deleted successfully');
     }
 }

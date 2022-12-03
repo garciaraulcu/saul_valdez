@@ -118,6 +118,12 @@
                                             <td>$ {{ $item->price*$item->quantity }} </b></td>
                                         </tr>
                                         @endforeach
+                                        <tr>
+                                            <td> </td>
+                                            <td> </td>
+                                            <td ><b>{{ \Cart::getTotalquantity() }} Articulos</b></td>
+                                            <td ><h5>Total: <b>$ {{ \Cart::getTotal() }} MXN</b></h5></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
