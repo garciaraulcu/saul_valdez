@@ -45,7 +45,19 @@ class CartController extends Controller
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
         
-        return view('products');
+        echo "
+        <script>
+        let text = 'Ir al Carrito de Compras?';
+        if (confirm(text) == true) {
+            location.replace('/cart')
+        } else {
+            location.replace('/store')
+        
+        }
+        document.getElementById('demo').innerHTML = text;
+        </script>
+        ";
+
     }
 
     public function updateCart(Request $request)

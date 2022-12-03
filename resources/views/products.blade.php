@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
     <div class="cards">
         @foreach (App\Models\Product::all() as $product)
             <form action="{{ route('cart.store', $product->id) }}" method="POST" enctype="multipart/form-data">
@@ -36,24 +33,27 @@
                         <input type="hidden" value="1" name="quantity">
 
                         <button type="submit" class="btn btn-primary" name="add" ">
-                            Agregar al Carrito
-                            <i class="fa fa-cart-plus cart-font"></i>
-                        </button>
+                                Agregar al Carrito
+                                <i class="fa fa-cart-plus cart-font"></i>
+                            </button>
 
-                        <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                            <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                        </div>
+                        <br />
                     </div>
-                    <br />
-                </div>
-            </form>
-        @endforeach
-    </div>
+                </form>
+     @endforeach
+                    </div>
 
-    <!-- Trigger/Open The Modal -->
+                    <!-- Trigger/Open The Modal -->
 
-   
 
-    <br>
-    <br>
-    <br>
 
-@endsection
+                    <br>
+                    <br>
+                    <br>
+
+
+
+
+                @endsection

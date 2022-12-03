@@ -11,10 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $user_id
  * @property $products
  * @property $total
- * @property $name
- * @property $lastname
  * @property $phone
- * @property $email
  * @property $street
  * @property $num
  * @property $colonia
@@ -37,10 +34,7 @@ class Order extends Model
 		'user_id' => 'required',
 		'products' => 'required',
 		'total' => 'required',
-		'name' => 'required',
-		'lastname' => 'required',
 		'phone' => 'required',
-		'email' => 'required',
 		'street' => 'required',
 		'num' => 'required',
 		'colonia' => 'required',
@@ -59,7 +53,7 @@ class Order extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','products','total','name','lastname','phone','email','street','num','colonia','city','state','postcode','country','paymentmethod','status'];
+    protected $fillable = ['user_id','products','total','phone','street','num','colonia','city','state','postcode','country','paymentmethod','status'];
 
 
 

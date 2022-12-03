@@ -37,27 +37,13 @@
                     <form method="POST" action="{{ route('orders.store') }}"  role="form" enctype="multipart/form-data">
                         @csrf
 
+
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="name">Nombre *</label>
-                                <input name="name" required type="text" class="form-control" id="name" placeholder="Nombre">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="name">Apellido *</label>
-                                <input name="lastname" required type="text" class="form-control" id="name" placeholder="Apellido">
-                            </div>
                             <div class="form-group col-md-6">
                                 <label for="phone">Telefono *</label>
                                 <input name="phone" required type="text" class="form-control" id="phone"
                                     placeholder="+52 55 12345678">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Correo Electronico *</label>
-                            <input name="email" required type="email" class="form-control" id="email"
-                                placeholder="user@example.com">
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCity">Calle</label>
                                 <input name="street" required type="text" class="form-control" id="inputCity" placeholder="Calle">

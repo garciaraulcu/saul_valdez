@@ -64,6 +64,10 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
 
+        if (!$order) {
+            return view('home');
+        }
+
         return view('order.show', compact('order'));
     }
 

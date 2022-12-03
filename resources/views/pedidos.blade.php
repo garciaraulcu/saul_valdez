@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    @can('delete')
+    @if ( Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
     <h2 style="color: blueviolet">Pedidos</h2><br>
     <div class="table-responsive">
         <table class="table table-striped">
@@ -28,8 +28,12 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-    @endcan
+    </div>        
+    @else
+        <h2 class="container">
+            Sin Acceso
+        </h2>
+    @endif
     <br>
     <br>
     <br>

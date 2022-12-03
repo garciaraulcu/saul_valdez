@@ -34,5 +34,13 @@
     <br>
     <a href="/orders">Editar Pedidos</a>
     @endcan
+
+    @if (Auth::user()->hasRole('Admin'))
+        <h3>For Admins</h3>
+    <a href="/pedidos">Pedidos</a>
+    <br>
+
+
+    @endif
 </div>
 @endsection

@@ -19,10 +19,7 @@ class Orders extends Migration
             $table->integer('user_id');
             $table->longtext('products');
             $table->integer('total');
-            $table->string('name');
-            $table->string('lastname');
             $table->string('phone');
-            $table->string('email');
             $table->string('street');
             $table->string('num');
             $table->string('colonia');

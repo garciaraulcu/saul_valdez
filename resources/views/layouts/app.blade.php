@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>MySite.com</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -97,13 +97,13 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm " style="background-color:darkblue; ">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: #FFFFFF">
-                    {{ config('app.name', 'Laravel') }}
+                    MySite.com
                 </a>
                 <a href="/store" class="navbar-brand " style="color: #FFFFFF">
                     Tienda
                 </a>
                 <a href="/home" class="navbar-brand " style="color: #FFFFFF">
-                    Home
+                    Mi Perfil
                 </a>
                 <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -140,7 +140,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a style="color: #FFFFFF" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a style="color: #FFFFFF" id="navbarDropdown" class="nav-link dropdown-toggle" href="/home" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -173,6 +173,10 @@
 
     </div>
 
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
 
