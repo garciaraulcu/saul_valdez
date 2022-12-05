@@ -1,50 +1,52 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         
-        <div class="form-group">
-            {{ Form::label('name') }}
-            {{ Form::text('name', $product->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
-            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('price') }}
-            {{ Form::text('price', $product->price, ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
-            {!! $errors->first('price', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('cantidad') }}
-            {{ Form::text('cantidad', $product->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
-            {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('category_id') }}
-            {{ Form::text('category_id', $product->category_id, ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => 'Category Id']) }}
-            {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
+        <div class="form-row">
+            <div class="form-group col-6 ">
+                {{ Form::label('name') }}
+                {{ Form::text('name', $product->name, ['class' => 'form-control ' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
+                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+            <div class="form-group col-6">
+                {{ Form::label('price') }}
+                {{ Form::text('price', $product->price, ['class' => 'form-control ' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
+                {!! $errors->first('price', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+            <div class="form-group col-6">
+                {{ Form::label('cantidad') }}
+                {{ Form::text('cantidad', $product->cantidad, ['class' => 'form-control ' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
+                {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+            <div class="form-group col-6">
+                {{ Form::label('category_id') }}
+                {{ Form::select('category_id', App\Categoria::pluck('name','id'), ['class' => 'form-control ' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => 'Category Id']) }}
+                {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
         </div>
         <div class="form-group">
             {{ Form::label('image') }}
-            {{ Form::text('image', $product->image, ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image']) }}
+            {{ Form::file('image', $product->image, ['accept' => 'image/*','class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image']) }}
             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('info') }}
-            {{ Form::text('info', $product->info, ['class' => 'form-control' . ($errors->has('info') ? ' is-invalid' : ''), 'placeholder' => 'Info']) }}
-            {!! $errors->first('info', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
             {{ Form::label('image_dos') }}
-            {{ Form::text('image_dos', $product->image_dos, ['class' => 'form-control' . ($errors->has('image_dos') ? ' is-invalid' : ''), 'placeholder' => 'Image Dos']) }}
+            {{ Form::file('image_dos', $product->image_dos, ['accept' => 'image/*','class' => 'form-control' . ($errors->has('image_dos') ? ' is-invalid' : ''), 'placeholder' => 'Image Dos']) }}
             {!! $errors->first('image_dos', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('image_tres') }}
-            {{ Form::text('image_tres', $product->image_tres, ['class' => 'form-control' . ($errors->has('image_tres') ? ' is-invalid' : ''), 'placeholder' => 'Image Tres']) }}
+            {{ Form::file('image_tres', $product->image_tres, ['accept' => 'image/*','class' => 'form-control' . ($errors->has('image_tres') ? ' is-invalid' : ''), 'placeholder' => 'Image Tres']) }}
             {!! $errors->first('image_tres', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('image_cuatro') }}
-            {{ Form::text('image_cuatro', $product->image_cuatro, ['class' => 'form-control' . ($errors->has('image_cuatro') ? ' is-invalid' : ''), 'placeholder' => 'Image Cuatro']) }}
+            {{ Form::file('image_cuatro', $product->image_cuatro, ['accept' => 'image/*','class' => 'form-control' . ($errors->has('image_cuatro') ? ' is-invalid' : ''), 'placeholder' => 'Image Cuatro']) }}
             {!! $errors->first('image_cuatro', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('info') }}
+            {{ Form::textarea('info', $product->info, ['id' => 'editor','class' => 'form-control' . ($errors->has('info') ? ' is-invalid' : ''), 'placeholder' => 'Info']) }}
+            {!! $errors->first('info', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>

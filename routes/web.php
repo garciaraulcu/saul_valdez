@@ -36,7 +36,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('user', UserController::class);
 
 //----------------------------Productos
-Route::resource('products', ProductController::class)->middleware('auth');
 
 Route::get('/store',  function ()
 {
@@ -53,6 +52,8 @@ Route::resource('giveroles', ModelHasRoleController::class)->middleware('auth');
 
 /* -------------- Asignar Permisos */
 Route::resource('givepermissions', ModelHasPermissionController::class)->middleware('auth');
+Route::resource('products', ProductController::class)->middleware('auth');
+
 });
 
 

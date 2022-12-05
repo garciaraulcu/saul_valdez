@@ -31,11 +31,11 @@ class Product extends Model
 		'price' => 'required',
 		'cantidad' => 'required',
 		'category_id' => 'required',
-		'image' => 'required',
+		'image' => 'required|image|max:5120',
 		'info' => 'required',
-		'image_dos' => 'required',
+		'image_dos' => 'required|image|max:5120',
 		'image_tres' => 'required',
-		'image_cuatro' => 'required',
+		'image_cuatro' => 'required|image|max:5120',
     ];
 
     protected $perPage = 20;

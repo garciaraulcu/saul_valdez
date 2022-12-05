@@ -45,7 +45,33 @@ class ProductController extends Controller
     {
         request()->validate(Product::$rules);
 
-        $product = Product::create($request->all());
+        $product = new Product;
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->cantidad = $request->cantidad;
+        $product->category_id = $request->category_id;
+        $product->info = $request->info;
+
+        $image = $request->file('image');
+        $image->move('img',$image->getClientOriginalName());
+        $product->image = "img/" . $image->getClientOriginalName();
+
+        $image_dos = $request->file('image_dos');
+        $image_dos->move('img',$image_dos->getClientOriginalName());
+        $product->image_dos = "img/" . $image_dos->getClientOriginalName();
+
+        $image_tres = $request->file('image_tres');
+        $image_tres->move('img',$image_tres->getClientOriginalName());
+        $product->image_tres = "img/" . $image_tres->getClientOriginalName();
+
+        $image_cuatro = $request->file('image_cuatro');
+        $image_cuatro->move('img',$image_cuatro->getClientOriginalName());
+        $product->image_cuatro = "img/" . $image_cuatro->getClientOriginalName();
+
+        $product->save();
+        
+        //$product = Product::create($request->all());
 
         return redirect()->route('products.index')
             ->with('success', 'Product created successfully.');
@@ -86,7 +112,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        request()->validate(Product::$rules);
+        //request()->validate(Product::$rules);
 
         $product->update($request->all());
 

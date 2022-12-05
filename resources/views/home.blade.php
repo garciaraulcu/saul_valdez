@@ -8,14 +8,18 @@
     <h5>Mis Pedidos</h5>
     <table class="table table-striped" style="">
         <thead class="thead-dark">
-            <th>Pedido</th>
+            <th>Pedido Id</th>
+            <th>Status</th>
+            <th>Hace</th>
             <th>Action</th>
         </thead>
         <tbody>
-            @foreach (App\Order::all()->where('user_id',Auth::user()->id) as $item)
+            @foreach (App\Order::all()->where('user_id',Auth::user()->id)->sortByDesc('id') as $item)
             <tr>
                 <td>#{{ $item->id }}</td>
-                <td><a href="{{ route('orders.show',$item->id) }}">Ver</a></td>
+                <td>{{ $item->status }}</td>
+                <td>{{ $item->created_at->diffForHumans() }}</td>
+                <td><a class="btn btn-secondary" href="{{ route('orders.show',$item->id) }}">Ver</a></td>
             </tr>
             @endforeach
         </tbody>

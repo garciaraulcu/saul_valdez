@@ -104,6 +104,7 @@
                             <div class='table-responsive'>
                                 <table class='table table-striped'>
                                     <thead style='background-color: #222; color:#fff'>
+                                        <th>id</th>
                                         <th>Productos</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
@@ -112,13 +113,15 @@
                                     <tbody>
                                         @foreach (\Cart::getContent() as $item)
                                         <tr>
+                                            <td>{{ $item->id }} </td>
                                             <td>{{ $item->name }} </td>
                                             <td>$ {{ $item->price }} </b></td>
                                             <td>x<b>{{ $item->quantity }}</b></td>
                                             <td>$ {{ $item->price*$item->quantity }} </b></td>
                                         </tr>
                                         @endforeach
-                                        <tr>
+                                        <tr class='w3-hide-small'>
+                                            <td> </td>
                                             <td> </td>
                                             <td> </td>
                                             <td ><b>{{ \Cart::getTotalquantity() }} Articulos</b></td>
@@ -127,6 +130,8 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <h3 class='w3-hide-medium w3-hide-large float-right'>Total: <b>$ {{ \Cart::getTotal() }} MXN</b></h3>
+                            <br>
                             ">
 
                         <button type="submit" class="btn btn-primary">Realizar Pedido</button>

@@ -8,7 +8,7 @@
                 @csrf
                 <div class="bg-card">
                     <div>
-                        <a href="#">
+                        <a href="{{ route('products.show',$product->id) }}">
                             <img src="{{ url($product->image) }}" alt="Image1" class="img" />
                         </a>
                     </div>
@@ -16,7 +16,7 @@
                         <a href="#" style="text-decoration: none">
                             <br>
                             <h6>
-                                {{ $product->name }}
+                                <a href="{{ route('products.show',$product->id) }}">{{ $product->name }}</a>
                             </h6>
                         <small>{{ $product->cantidad }} Disponibles</small>
                         
@@ -34,7 +34,7 @@
 
                         <input type="hidden" value="{{ $product->id }}" name="id">
                         <input type="hidden" value="{{ $product->name }}" name="name">
-                        <input type="hidden" value="{{ $product->category_id }}" name="name">
+                        <input type="hidden" value="{{ $product->category_id }}" name="category_id">
                         <input type="hidden" value="{{ $product->price }}" name="price">
                         <input type="hidden" value="{{ $product->image }}" name="image">
                         <input type="hidden" value="1" name="quantity">

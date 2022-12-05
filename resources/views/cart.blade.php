@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($cartItems as $item)
+                        @foreach (\Cart::getContent() as $item)
                             <tr>
                                 <td style="width: 1%">{{ ++$i }}</td>
                                 <td style="width: 15%">
