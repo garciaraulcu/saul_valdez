@@ -40,11 +40,7 @@
 										<th>Price</th>
 										<th>Cantidad</th>
 										<th>Category Id</th>
-										<th>Image</th>
-										<th>Info</th>
-										<th>Image Dos</th>
-										<th>Image Tres</th>
-										<th>Image Cuatro</th>
+
 
                                         <th></th>
                                     </tr>
@@ -58,11 +54,7 @@
 											<td>{{ $product->price }}</td>
 											<td>{{ $product->cantidad }}</td>
 											<td>{{ $product->category_id }}</td>
-											<td>{{ $product->image }}</td>
-											<td>{{ $product->info }}</td>
-											<td>{{ $product->image_dos }}</td>
-											<td>{{ $product->image_tres }}</td>
-											<td>{{ $product->image_cuatro }}</td>
+
 
                                             <td>
                                                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
