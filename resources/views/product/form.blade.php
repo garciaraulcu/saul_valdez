@@ -1,3 +1,4 @@
+@if (Auth::user()->hasRole('Superadmin'))
 <div class="box box-info padding-1">
     <div class="box-body">
         
@@ -54,3 +55,8 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>
+@else
+    <h2 class="container">
+        Sin Acceso
+    </h2>
+@endif

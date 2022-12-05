@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+@if (Auth::user()->hasRole('Superadmin'))
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -76,4 +78,8 @@
             </div>
         </div>
     </div>
+    @else
+    <h2 class="container">Sin Acceso</h2>
+@endif
 @endsection
+

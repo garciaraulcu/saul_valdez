@@ -87,7 +87,12 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        return view('product.show', compact('product'));
+        if ($product) {
+            # code...
+            return view('product.show', compact('product'));
+        }else{
+            return view('home');
+        }
     }
 
     /**

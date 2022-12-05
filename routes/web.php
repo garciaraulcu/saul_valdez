@@ -42,7 +42,11 @@ Route::get('/store',  function ()
     return view('products');
 });
 
+Route::resource('products', ProductController::class);
+
 Route::group(['middleware' => ['role:Superadmin']], function () {
+
+    
     //
     //---------------Crear Roles
 Route::resource('roles', RoleController::class)->middleware('auth');
@@ -52,8 +56,6 @@ Route::resource('giveroles', ModelHasRoleController::class)->middleware('auth');
 
 /* -------------- Asignar Permisos */
 Route::resource('givepermissions', ModelHasPermissionController::class)->middleware('auth');
-Route::resource('products', ProductController::class)->middleware('auth');
-
 });
 
 
