@@ -131,7 +131,7 @@
                                     @break
                                     @default
                                     <div class="container">
-                                        <h4>Gracias por tu pedido!</h4>
+                                        <h4>Gracias por tu pedido!  </h4>
                                         <p>
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
                                         </p>

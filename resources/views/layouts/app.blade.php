@@ -151,7 +151,7 @@
                             <li class="nav-item dropdown">
                                 <a style="color: #FFFFFF" id="navbarDropdown" class="nav-link dropdown-toggle" href="/home" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <i class="fa fa-user"></i> {{ Auth::user()->name }}
                                 </a>
 
                                 <div style="background-color: darkblue" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
