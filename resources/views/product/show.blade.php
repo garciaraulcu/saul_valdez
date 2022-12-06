@@ -27,8 +27,6 @@
                         </div>
                     </div>
 
-                    <br>
-                    <br>
                 </div>
                 <div class="col-md-6 ">
                     <br>
@@ -37,6 +35,8 @@
                             <h5>Descripción</h5>
                             <p>{!! $product->info !!}</p>
                         </div>
+                        <h6><b>Categoria: </b>{{ App\Categoria::find($product->category_id) ? App\Categoria::find($product->category_id)->name : "Sin Categoria" }}</h6>
+                        <h6><b>Piezas: </b>{{ $product->cantidad }}</h6>
                         <center>
                             <h3>$ {{ $product->price }} MXN</h3>
                             <form action="{{ route('cart.store', $product->id) }}" method="POST"
@@ -58,8 +58,7 @@
                                 <input type="hidden" name="product_id" value="{{ $product->id }}" />
                             </form>
                         </center>
-                        <h6><b>Categoria: </b>{{ App\Categoria::find($product->category_id) ? App\Categoria::find($product->category_id)->name : "Sin Categoria" }}</h6>
-                        <h6><b>Piezas: </b>{{ $product->cantidad }}</h6>
+                        <br>
                         <div class="w3-hide-medium w3-hide-large">
                             <h5>Descripción</h5>
                             <p>{!! $product->info !!}</p>
@@ -67,8 +66,9 @@
                     </div>
 
                 </div>
-
             </div>
+            <br>
+            <br>
         </div>
 
     </div>

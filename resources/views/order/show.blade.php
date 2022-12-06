@@ -93,6 +93,51 @@
                                 <strong>Status:</strong>
                                 {{ $order->status }}
                             </div>
+                            <div class="form-group">
+                                <strong>Informacion de Pago:</strong>
+                                <br><br>
+                                @switch($order->status)
+                                    @case('Entregado')
+                                        <div class="container">
+                                            <h4>Hemos entregado tu pedido con Exito. Gracias por tu preferencia!</h4>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
+                                            </p>
+                                        </div>
+                                        @break
+                                    @case('En Envio')
+                                    <div class="container">
+                                        <h4>Tu Pedido esta en proceso de Envio!</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
+                                        </p>
+                                    </div>
+                                        @break
+                                    @case('Cancelado')
+                                    <div class="container">
+                                        <h4>Tu Pedido ha sido Cancelado!</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
+                                        </p>
+                                    </div>
+                                    @break
+                                    @case('Pendiente de Pago')
+                                    <div class="container">
+                                        <h4>Realiza el pago para continuar con el envio.</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
+                                        </p>
+                                    </div>
+                                    @break
+                                    @default
+                                    <div class="container">
+                                        <h4>Gracias por tu pedido!</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
+                                        </p>
+                                    </div>
+                                @endswitch
+                            </div>
 
                         </div>
                     </div>
