@@ -21,7 +21,57 @@
                         <td>#{{ $item->id }}</td>
                         <td>{{ App\Models\User::find($item->user_id) ? App\Models\User::find($item->user_id)->name : "No Existe Usuario"}}</td>
                         <td>{{ $item->phone }}</td>
-                        <td>{{ $item->status }}</td>
+                        <td>
+                            @switch( $item->status )
+                                @case("Cancelado")
+                                    <div style="
+                                    background-color: #000; 
+                                    color:#fff;
+                                    border-radius:100px;
+                                    ">
+                                        <center><b>{{ $item->status }}</b></center>
+                                    </div>
+                                    @break
+                                @case("Entregado")
+                                <div style="
+                                    background-color:goldenrod; 
+                                    color:#fff;
+                                    border-radius:100px;
+                                    ">
+                                        <center><b>{{ $item->status }}</b></center>
+                                    </div>
+                                    
+                                    @break
+                                    @case("En Envio")
+                                    <div style="
+                                        background-color:orange; 
+                                        color:#fff;
+                                        border-radius:100px;
+                                        ">
+                                            <center><b>{{ $item->status }}</b></center>
+                                        </div>
+                                        
+                                        @break
+                                        @case("Pendiente de Pago")
+                                        <div style="
+                                            background-color:red; 
+                                            color:#fff;
+                                            border-radius:100px;
+                                            ">
+                                                <center><b>{{ $item->status }}</b></center>
+                                            </div>
+                                            
+                                            @break
+                                @default
+                                <div style="
+                                background-color: blue; 
+                                color:#fff;
+                                border-radius:100px;
+                                ">
+                                    <center><b>{{ $item->status }}</b></center>
+                                </div>
+                            @endswitch
+                        </td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td><a class="btn btn-secondary" href="{{ route('orders.show',$item->id) }}">Ver</a></td>
                     </tr>

@@ -10,7 +10,7 @@
     <h2 style="color: blueviolet;">Hemos Recibido tu Pedido. Gracias!</h2>
     <p>Para continuar Revisa las instrucciones que hemos enviado a tu correo para continual con el pago.</p>
     <br>
-    <center><i  style='font-size: 300px; color:blueviolet' class=' fa w3-hide-medium w3-hide-small'>&#xf058;</i></center>
+    <center><i  style='font-size: 300px; color:blueviolet' class=' fa '>&#xf058;</i></center>
 
 
     <p>Revisa los detalles de tu Pedido en <a href="/home">Tu Perfil</a></p>

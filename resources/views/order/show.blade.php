@@ -37,10 +37,7 @@
 
                                 <h5>User Information</h5>
                                 <div class="container">
-                                    <div class="">
-                                        <strong>User Id:</strong>
-                                        {{ $order->user_id }}
-                                    </div>
+                                    
                                     <div class="">
                                         <strong>Name:</strong>
                                         {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : "No Existe Ususario" }} 
