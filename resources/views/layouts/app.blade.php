@@ -192,39 +192,12 @@
 
     
 
-    <footer style="background-color:darkslategray;">
+    <footer style="background-color:#222;">
         <br><br>
-        <div class="container cards">
-            <div>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-            </div>
-            <div>
-
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-
-            </div>
-            <div>
-
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-
-            </div>
-            <div>
-
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-                <a href="" style="color: #f2f2f2">Hola Mundo</a><br>
-
-            </div>
+        <div class="container text-white">
+            <small>Hecho en México, 2022.</small>
+            <br>
+            <small>Sitio Web Administrado por: T-Developers.com</small>
         </div>
         <br><br>
     </footer>
