@@ -7,7 +7,7 @@
 
     @if ($order->user_id === Auth::user()->id || Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
 
-        <section class="content container-fluid">
+        <section class="content container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">

@@ -124,7 +124,12 @@
                                             <td> </td>
                                             <td> </td>
                                             <td> </td>
-                                            <td ><b>{{ \Cart::getTotalquantity() }} Articulos</b></td>
+                                            <td >
+                                                <b>
+                                                    {{ \Cart::getTotalquantity() }} 
+                                                    {{ \Cart::getTotalquantity() > 1 ? "Articulos" : "Articulo" }}
+                                                </b>
+                                            </td>
                                             <td ><h5>Total: <b>$ {{ \Cart::getTotal() }} MXN</b></h5></td>
                                         </tr>
                                     </tbody>

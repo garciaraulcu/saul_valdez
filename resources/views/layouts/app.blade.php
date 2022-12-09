@@ -172,7 +172,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 ">
 
             @yield('content')
 
@@ -194,10 +194,37 @@
 
     <footer style="background-color:#222;">
         <br><br>
-        <div class="container text-white">
-            <small>Hecho en México, 2022.</small>
-            <br>
-            <small>Sitio Web Administrado por: T-Developers.com</small>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="container text-white">
+                        <small>Hecho en México, 2022.</small>
+                        <br>
+                        <small>Sitio Web Administrado por: T-Developers.com</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="container text-white">
+                        <small>Hecho en México, 2022.</small>
+                        <br>
+                        <small>Sitio Web Administrado por: T-Developers.com</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="container text-white">
+                        <small>Hecho en México, 2022.</small>
+                        <br>
+                        <small>Sitio Web Administrado por: T-Developers.com</small>
+                    </div>
+                </div>
+                            <div class="col-md-3">
+                    <div class="container text-white">
+                        <small>Hecho en México, 2022.</small>
+                        <br>
+                        <small>Sitio Web Administrado por: T-Developers.com</small>
+                    </div>
+                </div>
+            </div>
         </div>
         <br><br>
     </footer>
