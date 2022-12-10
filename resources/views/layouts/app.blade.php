@@ -226,7 +226,14 @@
                 </div>
             </div>
         </div>
-        <br><br>
+        <br>
+        <br>
+        <div class="container text-white text-center">
+            <small>Hecho en México, 2022.</small>
+            <br>
+            <small>Sitio Web Administrado por: T-Developers.com</small>
+        </div>
+        <br>
     </footer>
 
     <script>
