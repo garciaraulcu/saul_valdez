@@ -120,7 +120,13 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="{{ route('cart.list') }}"  class="text-black btn btn-warning  nav-link" id="myBtn" style="color: #FFFFFF">
+                            <a href="{{ route('cart.list') }}"  
+                            @if (\Cart::getTotalQuantity() === 0)
+                            class="text-white btn   nav-link"    
+                            @else
+                            class="text-black btn btn-warning  nav-link"
+                            @endif 
+                            id="myBtn" style="color: #FFFFFF">
                                Cart <i  class="bi bi-cart-fill"></i>
                                 <b>{{ Cart::getTotalQuantity() }}</b>
                             </a>
