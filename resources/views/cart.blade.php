@@ -2,6 +2,29 @@
 
 
 @section('content')
+@if (\Cart::getTotalquantity() === 0)
+    <div class="container">
+        <h1 style="color:blueviolet">Ups!</h1>
+        <h2>El Carrito esta Vacio.</h2>
+        <br>
+        <a href="/store" class="btn btn-secondary">Agrgar Productos al Carrito</a>
+        <br>
+        <br>
+        <a href="/login">Iniciar Sesion</a>
+        <br>
+        <a href="/register">Registrarme</a>
+        <br>
+        <a href="/">Principal</a>
+@else
+    
+<style>
+    th{
+        background-color: #ccc;
+        color: #222;
+        border: 1px solid black;
+    }
+
+</style>
     <main>
         <div class="container ">
             @if ($message = Session::get('success'))
@@ -21,17 +44,16 @@
             </div>
             
             <div class="table-responsive">
-            <hr>    
-                <table >
+                <table class="table-striped">
                     <thead >
                         <tr >
                             <th>#</th>
-                            <th></th>
-                            <th>Articulo</th>
-                            <th>
-                                Cantidad
-                            </th>
-                            <th> Precio</th>
+                            <th>Imagen</th>
+                            <th >Nombre_de_Artuculo</th>
+                            <th>Actualizar_Cantidad</th>
+                            <th>Precio</th>
+                            <th> Cantidad</th>
+                            <th> Subtotal</th>
                             <th> Action </th>
                         </tr>
                     </thead>
@@ -63,11 +85,9 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                    <span>
-                                        $ {{ $item->price }} 
-                                    </span>
-                                </td>
+                                <td>$ {{ $item->price }} </td>
+                                <td> x{{ $item->quantity }} </td>
+                                <td>$ {{ $item->quantity*$item->price }} </td>
                                 <td>
                                     <form action="{{ route('cart.remove') }}" method="POST">
                                         @csrf
@@ -82,7 +102,9 @@
 
                             </tr>
                         @endforeach
-                        <tr class="w3-hide-small">
+                        <tr class="w3-hide-small w3-hide-medium">
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td><h5 class="float-right">Total: </h5></td>
@@ -98,9 +120,9 @@
                 </table>
 
             </div>
-            <hr>
+            <hr class="w3-hide-small">
             <br>
-            <div class="float-right w3-hide-large w3-hide-medium" >
+            <div class="float-right w3-hide-large " >
                 <h5><b>Total: $ {{ Cart::getTotal() }} MXN</b></h5>
                 <h5><b> {{ Cart::getTotalquantity() }} </b> {{ Cart::getTotalquantity() > 1 ? "Articulos" : "Articulo"}}</h5>
             </div>
@@ -110,12 +132,8 @@
         </div>
     </main>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <p class="container">
+        <b>NOTA:</b> Los pedidos estan sujetos a la disponibilidad de productos.
+    </p>
+@endif
 @endsection
