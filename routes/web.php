@@ -29,6 +29,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/changue-password', [App\Http\Controllers\HomeController::class, 'changuePassword'])->name('changue-password');
+Route::post('/changue-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
 
 
 //Roles y Permisos Rutas

@@ -161,8 +161,14 @@
                                 </a>
 
                                 <div style="background-color: darkblue" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    
+                                    <a style="color: #FFFFFF; background-color:darkblue" class="dropdown-item" href="{{ route('changue-password') }}">
+                                        <i class="fa fa-lock"></i>
+                                        Cambiar Contraseña
+                                    </a>
                                     <a style="color: #FFFFFF; background-color:darkblue" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out"></i>
                                         {{ __('Logout') }}
                                     </a>
 
@@ -188,6 +194,7 @@
 
     </div>
 
+    <br>
     <br>
     <br>
     <br>
