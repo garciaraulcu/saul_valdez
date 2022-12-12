@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
+use Illuminate\Support\Facades\Auth;
+
+use App\Mail\Correo;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class OrderController
@@ -47,6 +51,13 @@ class OrderController extends Controller
         request()->validate(Order::$rules);
 
         $order = Order::create($request->all());
+
+        $pedido = $order->id;
+
+
+
+        $correo = new Correo;
+        Mail::to($request->user())->send($correo);
 
         CartController::clearAllCart();
 

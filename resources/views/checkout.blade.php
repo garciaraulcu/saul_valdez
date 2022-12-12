@@ -25,7 +25,7 @@
     </style>
 
     <div class="container">
-        <h2 style="color: blueviolet;">Checkout</h2>
+        <h2 style="color: blueviolet;">Checkout </h2>
     </div>
     <br>
     @if (Auth::check())
@@ -187,9 +187,7 @@
                         </div>
                         <div style="float: right">
                             <h4>
-                                <b>
-                                    Total: $ {{ Cart::getTotal() }} MXN
-                                </b>
+                                <b>Total: $ {{ Cart::getTotal() }} MXN</b>
                             </h4>
                         </div>
                     </div>
