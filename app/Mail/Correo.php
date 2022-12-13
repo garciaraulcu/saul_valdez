@@ -11,25 +11,37 @@ class Correo extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Hemos recibido tu Pedido";
+    private $mailTo;
+    private $mailSubject;
+    // the values that shouldnt appear in the mail should be private
+
+    public $content;
+    public $pedido;
+    // public properties are accessible from the view
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param LayoutMailRawRequest $request
      */
-    public function __construct()
+    public function __construct($to, $subject, $content, $pedido)
     {
-        //
+        $this->content = $content;
+        $this->mailSubject = $subject;
+        $this->mailTo = $to;
+        $this->pedido = $pedido;
     }
 
     /**
      * Build the message.
      *
-     * @return $this
+     * @throws \Exception
      */
     public function build()
     {
-        return $this->view('emails.correo');
+         $this->view('emails.correo');
+
+         $this->subject($this->mailSubject)
+              ->to($this->mailTo);
     }
 }

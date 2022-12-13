@@ -52,14 +52,15 @@ class OrderController extends Controller
 
         $order = Order::create($request->all());
 
-        $pedido = $order->id;
 
+        $to = $request->user();
+        $subject = "Resumen de Pedido: #" . $order->id;
+        $content = $order->products;
+        $id = $order->id;
+        
+        Mail::send(new Correo($to, $subject, $content, $id));
 
-
-        $correo = new Correo;
-        Mail::to($request->user())->send($correo);
-
-        CartController::clearAllCart();
+        //CartController::clearAllCart();
 
         return redirect()->route('resumen')
             ->with('msgpedido', 'Tu Pedido se ha enviado con Exito!');

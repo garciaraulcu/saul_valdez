@@ -25,7 +25,7 @@
     </style>
 
     <div class="container">
-        <h2 style="color: blueviolet;">Checkout </h2>
+        <h2 style="color: blueviolet;">Checkout  </h2>
     </div>
     <br>
     @if (Auth::check())
@@ -101,7 +101,7 @@
 
                         <input name="products" type="hidden"
                             value="
-                            <div class='table-responsive'>
+                            <div style='overflow-x:auto;' >
                                 <table class='table table-striped'>
                                     <thead style='background-color: #222; color:#fff'>
                                         <th>id</th>
@@ -149,18 +149,16 @@
                 <div class="container">
                     <table>
                         <thead>
-                            <th>Cant</th>
                             <th></th>
                             <th>Articulo</th>
                             <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
                             <th></th>
                         </thead>
                         <tbody>
                             @foreach ($checkoutItems as $item)
                                 <tr>
-                                    <td style="text-align: left">
-                                        x{{ $item->quantity }}
-                                    </td>
                                     <td style="width: 30%">
                                         <img src="{{ $item->attributes->image }}" alt="{{ $item->name }}"
                                             style="width: 100%;">
@@ -171,6 +169,12 @@
                                     <td style="width: 20%; text-aling: center">
                                         <small>${{ $item->price }} MXN</small>
 
+                                    </td>
+                                    <td style="text-align: left" class=" text-center">
+                                        <small>x{{ $item->quantity }}</small>
+                                    </td>
+                                    <td style="text-align: left">
+                                        <small>$ {{ $item->quantity*$item->price }} MXN</small>
                                     </td>
 
                                 </tr>
