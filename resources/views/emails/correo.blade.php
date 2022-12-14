@@ -41,7 +41,7 @@
 <body style="background-color: #f2f2f2; font-family: 'Helvetica';" >
 <br>
         <center><h3><a href="{{ config('app.name') }}" style="text-decoration: none">Mercado FES</a></h3></center>
-    <div class="bg-card">
+    <div class="bg-card container">
         <br>
         <h1 style="margin-left: 5%;">Pedido: #{{ $pedido }}</h1>
             <div >
@@ -59,14 +59,18 @@
     <div style="margin-left: 5%;">
         Ir a <a href="{{ config('app.name') }}/home">Mis Pedidos</a>
     </div>
-    <center>
-   <div style="width: 90%">
-            <small>mercadofes.com</small>
-        <br>
-        <small>Hecho en México, 2022.</small>
-    </div>
-    <br><br>
-    </center>
+    <br>
+    <br>
 </body>
 
+<footer class="container" style="background-color: #222; color:#FFFFFF;">
+    <center>
+        <div style="width: 90%; padding:20px;">
+                 <small>mercadofes.com</small>
+             <br>
+             <small>Hecho en México, 2022.</small>
+         </div>
+         <br><br>
+         </center>
+</footer>
 </html>
