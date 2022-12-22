@@ -45,7 +45,7 @@ class CartController extends Controller
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
         
-        echo "
+        /*echo "
         <script>
         let text = 'Ir al Carrito de Compras?';
         if (confirm(text) == true) {
@@ -56,7 +56,9 @@ class CartController extends Controller
         }
         document.getElementById('demo').innerHTML = text;
         </script>
-        ";
+        ";*/
+
+        return redirect()->route('cart.list');
 
     }
 

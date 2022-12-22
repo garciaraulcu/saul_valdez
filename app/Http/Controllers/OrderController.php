@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,13 @@ class OrderController extends Controller
         request()->validate(Order::$rules);
 
         $order = Order::create($request->all());
+
+
+        foreach (\Cart::getContent() as $value) {
+            # code...
+            $decrement = Product::find($value->id);
+            $decrement->decrement('cantidad', $value->quantity);
+        }
 
 
         $to = $request->user();
