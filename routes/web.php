@@ -61,6 +61,7 @@ Route::resource('giveroles', ModelHasRoleController::class)->middleware('auth');
 
 /* -------------- Asignar Permisos */
 Route::resource('givepermissions', ModelHasPermissionController::class)->middleware('auth');
+
 });
 
 

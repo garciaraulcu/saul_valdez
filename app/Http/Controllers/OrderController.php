@@ -68,10 +68,9 @@ class OrderController extends Controller
         
         Mail::send(new Correo($to, $subject, $content, $id));
 
-        //CartController::clearAllCart();
+        CartController::clearAllCart();
 
-        return redirect()->route('resumen')
-            ->with('msgpedido', 'Tu Pedido se ha enviado con Exito!');
+        return view('resumen')->with('order', $order);
     }
 
     /**

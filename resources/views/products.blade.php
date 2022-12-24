@@ -22,6 +22,7 @@
                             <a href="{{ route('products.show',$product->id) }}">{{ $product->name }}</a>
                         </h6>
                     <small>{{ $product->cantidad }} Disponibles</small>
+                    <br>
                     
                     </a>
                     <br>

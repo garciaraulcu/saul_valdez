@@ -2,13 +2,8 @@
 
 @section('content')
     <div class="container">
-        @if ($message = Session::get('msgpedido'))
-            <div class="alert alert-success">
-                <p class=" container">{{ $message }}</p>
-            </div>
-        @endif
 
-        @if (\Cart::getTotalquantity() === 0)
+        @if (empty($order))
             <br>
             <div >
                 <h2 style="color: blueviolet">Ups!</h2>
