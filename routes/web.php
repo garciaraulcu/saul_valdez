@@ -84,9 +84,7 @@ Route::resource('categorias', CategoriaController::class)->middleware('auth');
 
 
 Route::get('/checkout', [CartController::class, 'checkOut'])->name('checkout');
-Route::get('/resumen', function (){
-    return view('resumen');
-})->name('resumen');
+
 
 Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');

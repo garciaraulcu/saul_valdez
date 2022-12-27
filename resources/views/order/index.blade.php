@@ -88,5 +88,7 @@
             </p>
             <a href="/store" class="btn btn-primary">Volver a la Tienda</a>
     </div>
+    <br>
+    <br>
 @endif
 @endsection

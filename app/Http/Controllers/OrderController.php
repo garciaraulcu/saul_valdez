@@ -70,7 +70,7 @@ class OrderController extends Controller
 
         CartController::clearAllCart();
 
-        return view('resumen')->with('order', $order);
+        return redirect()->route('home');
     }
 
     /**

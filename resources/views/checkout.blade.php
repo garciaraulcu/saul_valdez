@@ -29,6 +29,7 @@
     </div>
     <br>
     @if (Auth::check())
+    @if (\Cart::getTotalquantity() > 0)
     <div class="container">
         <div class="flex-container">
             <div class="flex-item-right">
@@ -201,6 +202,13 @@
             </div>
         </div>
     </div>
+    @else
+        <div class="container">
+            <h2 style="color:blueviolet">Ups! tu carrito esta vacio</h2>
+            <p>Por Favor Agrega uno o Varios Artículos para mostrar la lista de Compras y continuar con el pedido.</p>
+            <a href="/store" class="btn btn-secondary">Agregar Productos <i class="fa fas-cart"></i></a>
+        </div>
+    @endif
     @else
     <div class="container">
         <h2>Para realizar Pedidos <a href="/login">Inicia Sesion</a></h2>
