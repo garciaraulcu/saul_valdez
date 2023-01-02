@@ -132,4 +132,20 @@ class OrderController extends Controller
         return redirect()->route('orders.index')
             ->with('success', 'Order deleted successfully');
     }
+
+    public function print($id)
+    {
+
+            # code...
+            $order = Order::find($id);
+
+            $data = [
+                'order' => $order
+            ];
+        
+            return \PDF::loadView('order.pdf', $data)
+                ->stream('Pedido_'.$order->id.'.pdf');
+                
+
+    }
 }

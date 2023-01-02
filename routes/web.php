@@ -73,6 +73,8 @@ Route::get('pedidos', function ()
     return view('pedidos');
 })->middleware('auth');
 
+Route::post('pedidos/{id}', [App\Http\Controllers\OrderController::class, 'print'])->name('print');
+
 /* -------------- Categorias Rutas */
 
 Route::resource('categorias', CategoriaController::class)->middleware('auth');

@@ -1,43 +1,23 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pedido  {{ $order->id }} </title>
+  
+    
 
-@section('template_title')
-    {{ $order->name ?? 'Show Order' }}
-@endsection
-@section('content')
+</head>
+<body style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+    <h1>Pedido: #{{ $order->id }} </h1>
+    <h5>{{ Carbon\Carbon::parse($order->created_at,'UTC')->timezone('America/Mexico_City')->isoFormat('LLLL') }}</h5>
 
-    @if ($order->user_id === Auth::user()->id || Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
+        {!! $order->products !!}
 
-        <section class="content container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="float-left">
-                                <span class="card-title">Show Order</span>
-                            </div>
-                            <div class="float-right">
-                                @can('delete')
-                                    <a class="btn btn-primary" href="/pedidos"> Back</a>
-                                @endcan
-                            </div>
-                        </div>
-
-                        <div class="card-body" style="background-color: #fff">
-                            <div class="form-group">
-                                <h1>Pedido: #{{ $order->id }}</h1>
-                                <form action="{{ route('print', $order->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class=" btn-secondary w3-hide-small" style="float: right"><i class="fa fa-print"></i> Imprimir</button>
-                                </form>
-                                
-                                <h6>{{ Carbon\Carbon::parse($order->created_at,'UTC')->timezone('America/Mexico_City')->isoFormat('LLLL') }}</h6>
-                            </div>
-                            <div class="form-group">
-                                {!! $order->products !!}
-                            </div>
-                            
-
-                                <h5>User Information</h5>
+        <hr>
+        
+        <h5>User Information</h5>
                                 <div class="container">
                                     
                                     <div class="">
@@ -92,6 +72,9 @@
                                 <strong>Status:</strong>
                                 {{ $order->status }}
                             </div>
+                            <br>
+                            <hr>
+
                             <div class="form-group">
                                 <br><br>
                                 @switch($order->status)
@@ -136,27 +119,6 @@
                                     </div>
                                 @endswitch
                             </div>
+</body>
+</html>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @else
-        <h2 class="container">
-            Sin acceso
-        </h2>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    @endif
-@endsection
