@@ -74,6 +74,11 @@ Route::get('pedidos', function ()
 })->middleware('auth');
 
 Route::post('pedidos/{id}', [App\Http\Controllers\OrderController::class, 'print'])->name('print');
+Route::get('pedidos/{id}', function ()
+{
+    # code...
+    return redirect('/home');
+});
 
 /* -------------- Categorias Rutas */
 

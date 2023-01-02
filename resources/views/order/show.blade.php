@@ -25,6 +25,7 @@
                         <div class="card-body" style="background-color: #fff">
                             <div class="form-group">
                                 <h1>Pedido: #{{ $order->id }}</h1>
+                                
                                 <form action="{{ route('print', $order->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class=" btn-secondary w3-hide-small" style="float: right"><i class="fa fa-print"></i> Imprimir</button>
@@ -35,10 +36,17 @@
                             <div class="form-group">
                                 {!! $order->products !!}
                             </div>
-                            
+                            <h1>Codigo QR</h1>
+                            <div class=" text-center">
+                                {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate(Request::url()) !!}
+                                <p>Scan me to return to the original page.</p>
+                            </div>
+                            <hr>
 
-                                <h5>User Information</h5>
-                                <div class="container">
+                            <div class="row">
+                                <div class="container col-md">
+                                <center><h5>User Information</h5></center>
+
                                     
                                     <div class="">
                                         <strong>Name:</strong>
@@ -52,9 +60,11 @@
                                         <strong>Email:</strong>
                                         {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->email : "No Existe Correo de Ususario" }}
                                     </div>
+                                    <br>
                                 </div>
-                                <h5>Direccion</h5>
-                                <div class=" container">
+                                <div class=" container col-md">
+                                    <center><h5>Direccion</h5></center>
+
                                     <div class="">
                                         <strong>Street: </strong>
                                         {{ $order->street }}
@@ -83,6 +93,8 @@
                                         <strong>Country: </strong>
                                         {{ $order->country }}
                                     </div>
+                            </div>
+
                                 </div><br>
                             <div class="form-group">
                                 <strong>Forma de Pago:</strong>
@@ -92,6 +104,7 @@
                                 <strong>Status:</strong>
                                 {{ $order->status }}
                             </div>
+                            <hr>
                             <div class="form-group">
                                 <br><br>
                                 @switch($order->status)

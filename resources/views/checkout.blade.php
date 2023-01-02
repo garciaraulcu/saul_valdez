@@ -131,7 +131,7 @@
                                                     {{ \Cart::getTotalquantity() > 1 ? "Articulos" : "Articulo" }}
                                                 </b>
                                             </td>
-                                            <td >Total: <b>$ {{ \Cart::getTotal() }} MXN</b></td>
+                                            <td > <b>$ {{ \Cart::getTotal() }} MXN</b></td>
                                         </tr>
                                     </tbody>
                                 </table>
