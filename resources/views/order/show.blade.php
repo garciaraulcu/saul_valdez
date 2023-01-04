@@ -26,12 +26,18 @@
                             <div class="form-group">
                                 <h1>Pedido: #{{ $order->id }}</h1>
                                 
-                                <form action="{{ route('print', $order->id) }}" method="POST">
+                                <form action="{{ route('print', $order->id) }}" method="POST" target="_blank">
                                 @csrf
-                                <button type="submit" class=" btn-secondary w3-hide-small" style="float: right"><i class="fa fa-print"></i> Imprimir</button>
+                                <button type="submit" class="btn-primary w3-hide-small" style="float: right"><i style="font-size: 15px" class="bi bi-filetype-pdf"></i> Guardar PDF</button>
                                 </form>
                                 
-                                <h6>{{ Carbon\Carbon::parse($order->created_at,'UTC')->timezone('America/Mexico_City')->isoFormat('LLLL') }}</h6>
+                                <h6>
+                                    {{ 
+                                       Carbon\Carbon::parse($order->created_at,'UTC')
+                                       ->timezone('America/Mexico_City')
+                                       ->isoFormat('LLLL')
+                                    }}
+                                </h6>
                             </div>
                             <div class="form-group">
                                 {!! $order->products !!}

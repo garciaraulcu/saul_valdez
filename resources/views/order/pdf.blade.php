@@ -28,7 +28,10 @@
     <br>
     <small style="font-size: 12px">Escanea éste codigo QR para volver a la página original</small>
     <br><br><br>
-        <img style="padding-left: 70px" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(150)->generate(Request::url())) !!} ">
+        <img style="padding-left: 70px" src="data:image/png;base64, 
+        {!! base64_encode(QrCode::format('png')
+        ->size(150)
+        ->generate(Request::root() . '/orders/' . $order->id )) !!} ">
 </td>
 </table>    
 
