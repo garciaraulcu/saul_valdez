@@ -6,7 +6,6 @@
 @section('content')
 
     @if ($order->user_id === Auth::user()->id || Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
-
         <section class="content container">
             <div class="row">
                 <div class="col-md-12">
@@ -25,38 +24,37 @@
                         <div class="card-body" style="background-color: #fff">
                             <div class="form-group">
                                 <h1>Pedido: #{{ $order->id }}</h1>
-                                
+
                                 <form action="{{ route('print', $order->id) }}" method="POST" target="_blank">
-                                @csrf
-                                <button type="submit" class="btn-primary w3-hide-small" style="float: right"><i style="font-size: 15px" class="bi bi-filetype-pdf"></i> Guardar PDF</button>
+                                    @csrf
+                                    <button type="submit" class="btn-primary w3-hide-small" style="float: right"><i
+                                            style="font-size: 15px" class="bi bi-filetype-pdf"></i> Guardar PDF</button>
                                 </form>
-                                
+
                                 <h6>
-                                    {{ 
-                                       Carbon\Carbon::parse($order->created_at,'UTC')
-                                       ->timezone('America/Mexico_City')
-                                       ->isoFormat('LLLL')
-                                    }}
+                                    {{ Carbon\Carbon::parse($order->created_at, 'UTC')->timezone('America/Mexico_City')->isoFormat('LLLL') }}
                                 </h6>
                             </div>
                             <div class="form-group">
                                 {!! $order->products !!}
                             </div>
-                            <h1>Codigo QR</h1>
-                            <div class=" text-center">
-                                {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate(Request::url()) !!}
-                                <p>Scan me to return to the original page.</p>
-                            </div>
+                            <!--<h1>Codigo QR</h1>
+                                <div class=" text-center">
+                                    {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate(Request::url()) !!}
+                                    <p>Scan me to return to the original page.</p>
+                                </div>-->
                             <hr>
 
                             <div class="row">
                                 <div class="container col-md">
-                                <center><h5>User Information</h5></center>
+                                    <center>
+                                        <h5>User Information</h5>
+                                    </center>
 
-                                    
+
                                     <div class="">
                                         <strong>Name:</strong>
-                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : "No Existe Ususario" }} 
+                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : 'No Existe Ususario' }}
                                     </div>
                                     <div class="">
                                         <strong>Phone:</strong>
@@ -64,12 +62,14 @@
                                     </div>
                                     <div class="">
                                         <strong>Email:</strong>
-                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->email : "No Existe Correo de Ususario" }}
+                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->email : 'No Existe Correo de Ususario' }}
                                     </div>
                                     <br>
                                 </div>
                                 <div class=" container col-md">
-                                    <center><h5>Direccion</h5></center>
+                                    <center>
+                                        <h5>Direccion</h5>
+                                    </center>
 
                                     <div class="">
                                         <strong>Street: </strong>
@@ -99,60 +99,124 @@
                                         <strong>Country: </strong>
                                         {{ $order->country }}
                                     </div>
-                            </div>
+                                </div>
 
-                                </div><br>
-                            <div class="form-group">
-                                <strong>Forma de Pago:</strong>
-                                {{ $order->paymentmethod }}
                             </div>
+                            <hr>
                             <div class="form-group">
                                 <strong>Status:</strong>
                                 {{ $order->status }}
                             </div>
+                            <div class="form-group">
+                                <strong>Forma de Pago:</strong>
+                                {{ $order->paymentmethod }}
+
+                            </div>
+
                             <hr>
                             <div class="form-group">
-                                <br><br>
+
                                 @switch($order->status)
                                     @case('Entregado')
-                                        <div class="container">
-                                            <h4>Hemos entregado tu pedido con Exito. Gracias por tu preferencia!</h4>
+                                        <div class="container p-3" style="background-color: blueviolet; color:#fff">
+                                            <h4>Hemos Habilitado la descarga de tus productos</h4>
+
                                             <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
+                                                Ya puedes descargar tus productos en la tabla de este resumen.
                                             </p>
                                         </div>
-                                        @break
+                                    @break
+
                                     @case('En Envio')
-                                    <div class="container">
-                                        <h4>Tu Pedido esta en proceso de Envio!</h4>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
-                                        </p>
-                                    </div>
-                                        @break
+                                        <div class="container">
+                                            <h4>Tu Pedido esta en proceso de Envio!</h4>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia.
+                                                Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti
+                                                cumque eum corrupti quo tempora minima eveniet aliquid!
+                                            </p>
+                                        </div>
+                                    @break
+
                                     @case('Cancelado')
-                                    <div class="container">
-                                        <h4>Tu Pedido ha sido Cancelado!</h4>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
-                                        </p>
-                                    </div>
+                                        <div class="container">
+                                            <h4>Tu Pedido ha sido Cancelado!</h4>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia.
+                                                Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti
+                                                cumque eum corrupti quo tempora minima eveniet aliquid!
+                                            </p>
+                                        </div>
                                     @break
+
                                     @case('Pendiente de Pago')
-                                    <div class="container">
-                                        <h4>Realiza el pago para continuar con el envio.</h4>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
-                                        </p>
-                                    </div>
+                                        <div class="container">
+                                            @if ($order->paymentmethod === 'Efectivo')
+                                                <div class="container card-body card" style="background-color: #f2f2f2">
+                                                    <h4><b>Pago en Efectivo</b></h4>
+                                                    <p>
+                                                        Realiza el Deposito en tiendas de conveniencia como:
+                                                    <ul>
+                                                        <li>OXXO</li>
+                                                        <li>Farmacias Similares</li>
+                                                        <li>7 Eleven</li>
+                                                    </ul>
+
+                                                    </p>
+                                                </div>
+                                            @else
+                                                <div class="container card-body card">
+                                                    <h4><b>Transferencia</b></h4>
+                                                    <p>
+                                                        Realiza una transferencia desde tu app de banco al siguiente numero de
+                                                        Cuenta:
+
+
+                                                    <ul>
+                                                        <li>Cuenta: <b>25008141576</b></li>
+                                                        <li>Banco: <b>Santander</b></li>
+                                                        <li>Concepto: <b>{{ $order->id }}</b></li>
+                                                    </ul>
+
+                                                    </p>
+                                                </div>
+                                            @endif
+                                        </div>
                                     @break
+
                                     @default
-                                    <div class="container">
-                                        <h4>Gracias por tu pedido!  </h4>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, impedit mollitia. Consequatur quas eaque ipsa nam provident, numquam ab tenetur reiciendis deleniti cumque eum corrupti quo tempora minima eveniet aliquid!
-                                        </p>
-                                    </div>
+                                        <div class="container">
+                                            @if ($order->paymentmethod === 'Efectivo')
+                                                <div class="container card-body card" style="background-color: #f2f2f2">
+                                                    <h4><b>Pago en Efectivo</b></h4>
+                                                    <p>
+                                                        Realiza el Deposito en tiendas de conveniencia como:
+                                                    <ul>
+                                                        <li>OXXO</li>
+                                                        <li>Farmacias Similares</li>
+                                                        <li>7 Eleven</li>
+                                                    </ul>
+
+                                                    </p>
+                                                </div>
+                                            @else
+                                                <div class="container card-body card">
+                                                    <h4><b>Transferencia</b></h4>
+                                                    <p>
+                                                        Realiza una transferencia desde tu app de banco al siguiente numero de
+                                                        Cuenta:
+
+
+                                                    <ul>
+                                                        <li>Cuenta: <b>25008141576</b></li>
+                                                        <li>Banco: <b>Santander</b></li>
+                                                        <li>Concepto: <b>{{ $order->id }}</b></li>
+                                                    </ul>
+
+                                                    </p>
+                                                </div>
+                                            @endif
+                                        </div>
                                 @endswitch
                             </div>
 

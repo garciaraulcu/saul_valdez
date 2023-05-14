@@ -33,7 +33,9 @@
     <div class="container">
         <div class="flex-container">
             <div class="flex-item-right">
-                <h5><b>Datos de Envio</b></h5>
+
+
+
                 <div class="container">
                     <form method="POST" action="{{ route('orders.store') }}"  role="form" enctype="multipart/form-data">
                         @csrf
@@ -41,42 +43,33 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="phone">Telefono *</label>
-                                <input name="phone" required type="text" class="form-control" id="phone"
+                                <input name="phone" required type="hidden" value="NotAvailable" class="form-control" id="phone"
                                     placeholder="+52 55 12345678">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Calle</label>
-                                <input name="street" required type="text" class="form-control" id="inputCity" placeholder="Calle">
+                                <input name="street" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Calle">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Numero</label>
-                                <input name="num" required type="text" class="form-control" id="inputCity" placeholder="Numero">
+                                <input name="num" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Numero">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Colonia</label>
-                                <input name="colonia" required type="text" class="form-control" id="inputCity" placeholder="Colonia">
+                                <input name="colonia" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Colonia">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Ciudad</label>
-                                <input name="city" required type="text" class="form-control" id="inputCity" placeholder="Ciudad">
+                                <input name="city" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Ciudad">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputState">Estado</label>
-                                <input name="state" required type="text" placeholder="Estado" class="form-control">
+                                <input name="state" required type="hidden" value="NotAvailable" placeholder="Estado" class="form-control">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="pais">Pais</label>
-                                <input name="country" id="pais" required type="text" placeholder="Pais" class="form-control">
+                                <input name="country" id="pais" required type="hidden" value="NotAvailable" placeholder="Pais" class="form-control">
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="inputZip">Codigo Postal</label>
-                                <input name="postcode" required type="text" class="form-control" id="inputZip" placeholder="Ej. 90210">
+                                <input name="postcode" required type="hidden" value="NotAvailable" class="form-control" id="inputZip" placeholder="Ej. 90210">
                             </div>
                         </div>
 
 
-                        <br>
                         <p><b>Selecciona un Metodo de Pago</b></p>
                         <div class="form-group">
                             <label for="payment">Formas de Pago</label>
@@ -109,7 +102,7 @@
                                         <th>Productos</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
-                                        <th>Subtotal</th>
+                                        <th>Total</th>
                                     </thead>
                                     <tbody>
                                         @foreach (\Cart::getContent() as $item)
