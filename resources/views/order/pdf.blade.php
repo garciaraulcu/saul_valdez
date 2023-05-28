@@ -99,9 +99,6 @@
                 <div class="container" style="background-color: blueviolet; color:aqua; padding:10px">
                     <h4>Hemos entregado tu pedido con Exito!</h4>
 
-                    <p>
-                        Ya puedes descargar tus productos del Pedido en la tabla de resumen 
-                    </p>
 
                 </div>
             @break
@@ -146,7 +143,7 @@
                                 <ul>
                                     <li>Cuenta: <b>25008141576</b></li>
                                     <li>Banco: <b>Santander</b></li>
-                                    <li>Concepto: <b>{{ $order->id }}</b></li>
+                                    <li>Concepto: <b>P{{ $order->id }}</b></li>
                                 </ul>
 
                                 </p>
@@ -181,7 +178,7 @@
                             <ul>
                                 <li>Cuenta: <b>25008141576</b></li>
                                 <li>Banco: <b>Santander</b></li>
-                                <li>Concepto: <b>{{ $order->id }}</b></li>
+                                <li>Concepto: <b>P-{{ $order->id }}</b></li>
                             </ul>
 
                             </p>

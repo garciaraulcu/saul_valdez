@@ -175,7 +175,7 @@
                                                     <ul>
                                                         <li>Cuenta: <b>25008141576</b></li>
                                                         <li>Banco: <b>Santander</b></li>
-                                                        <li>Concepto: <b>{{ $order->id }}</b></li>
+                                                        <li>Concepto: <b>P-{{ $order->id }}</b></li>
                                                     </ul>
 
                                                     </p>
@@ -210,7 +210,7 @@
                                                     <ul>
                                                         <li>Cuenta: <b>25008141576</b></li>
                                                         <li>Banco: <b>Santander</b></li>
-                                                        <li>Concepto: <b>{{ $order->id }}</b></li>
+                                                        <li>Concepto: <b>P-{{ $order->id }}</b></li>
                                                     </ul>
 
                                                     </p>

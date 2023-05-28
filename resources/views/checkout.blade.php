@@ -41,31 +41,40 @@
                         @csrf
 
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input name="phone" required type="hidden" value="NotAvailable" class="form-control" id="phone"
-                                    placeholder="+52 55 12345678">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input name="street" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Calle">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input name="num" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Numero">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input name="colonia" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Colonia">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input name="city" required type="hidden" value="NotAvailable" class="form-control" id="inputCity" placeholder="Ciudad">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input name="state" required type="hidden" value="NotAvailable" placeholder="Estado" class="form-control">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input name="country" id="pais" required type="hidden" value="NotAvailable" placeholder="Pais" class="form-control">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <input name="postcode" required type="hidden" value="NotAvailable" class="form-control" id="inputZip" placeholder="Ej. 90210">
+                        <div class="form-group">
+                            <div class="form-row container">
+                                <div class="form-group col-md-5">
+                                    <label for="street">Calle</label>
+                                    <input name="street" required  class="form-control" id="inputCity" >
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="num">Numero</label>
+                                    <input name="num" required   class="form-control" id="inputCity">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="colonia">Colonia</label>
+                                    <input name="colonia" required   class="form-control" id="inputCity" >
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="city">Ciudad / Municipio</label>
+                                    <input name="city" required   class="form-control" id="inputCity" >
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="state">Estado</label>
+                                    <input name="state" required  class="form-control">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="country">Pais</label>
+                                    <input name="country" id="pais" required   placeholder="Pais" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="postcode">Codigo Postal</label>
+                                    <input name="postcode" required   class="form-control" id="inputZip" placeholder="Ej. 90210">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="phpne">Telefono *</label>
+                                    <input name="phone" required   class="form-control" id="phone" >
+                                </div>
                             </div>
                         </div>
 
