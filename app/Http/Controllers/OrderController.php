@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Orderproduct;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
@@ -24,10 +25,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::paginate();
+        $orders = Order::all();
+        $i = 0;
 
         return view('order.index', compact('orders'))
-            ->with('i', (request()->input('page', 1) - 1) * $orders->perPage());
+            ->with('i', $i);
     }
 
     /**
@@ -53,20 +55,26 @@ class OrderController extends Controller
 
         $order = Order::create($request->all());
 
+        foreach (\Cart::getContent() as $item) {
+            # code...
+            $orderProducts = new Orderproduct;
+            $orderProducts->id_order = $order->id;
+            $orderProducts->id_products = $item->id;
+            $orderProducts->save();
+        }
 
-        foreach (\Cart::getContent() as $value) {
+        /*foreach (\Cart::getContent() as $value) {
             # code...
             $decrement = Product::find($value->id);
             $decrement->decrement('cantidad', $value->quantity);
-        }
+        }*/
 
-
-        $to = $request->user();
+        /*$to = $request->user();
         $subject = "Resumen de Pedido: #" . $order->id;
         $content = $order->products;
         $id = $order->id;
         
-        Mail::send(new Correo($to, $subject, $content, $id));
+        Mail::send(new Correo($to, $subject, $content, $id));*/
 
         CartController::clearAllCart();
 
@@ -82,12 +90,13 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::find($id);
+        $orderResume = Orderproduct::all()->where('id_order',$id);
 
         if (!$order) {
             return view('home');
         }
 
-        return view('order.show', compact('order'));
+        return view('order.show', compact('order','orderResume'));
     }
 
     /**

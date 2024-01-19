@@ -75,7 +75,6 @@
                 </div>
                 </div>
             </div>
-            {!! $orders->links() !!}
         </div>
     </div>
 </div>

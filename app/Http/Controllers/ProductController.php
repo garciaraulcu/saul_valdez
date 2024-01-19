@@ -52,6 +52,7 @@ class ProductController extends Controller
         $product->cantidad = $request->cantidad;
         $product->category_id = $request->category_id;
         $product->info = $request->info;
+        $product->link_download = $request->link_download;
 
         $image = $request->file('image');
         $image->move('img',$image->getClientOriginalName());

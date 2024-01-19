@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $image_cuatro
  * @property $created_at
  * @property $updated_at
+ * @property $link_download
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -33,6 +34,7 @@ class Product extends Model
 		'category_id' => 'required',
 		'image' => 'required|image|max:5120',
 		'info' => 'required',
+		'link_download' => 'required',
 		'image_dos' => 'required|image|max:5120',
 		'image_tres' => 'required',
 		'image_cuatro' => 'required|image|max:5120',
@@ -45,7 +47,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','price','cantidad','category_id','image','info','image_dos','image_tres','image_cuatro'];
+    protected $fillable = ['name','price','cantidad','category_id','image','info','image_dos','image_tres','image_cuatro','link_download'];
 
 
 

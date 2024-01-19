@@ -44,6 +44,11 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="form-group col-6">
+                                        <label  for="cantidad">Link de Descarga</label>
+                                        <input name="link_download" class="form-control" type="text"
+                                            value="{{ $product->link_download }}">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="image">IMG 1</label>

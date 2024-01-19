@@ -25,6 +25,11 @@
             </div>
         </div>
         <div class="form-group">
+            {{ Form::label('Link de Descarga') }}
+            {{ Form::text('link_download', $product->link_download, ['class' => 'form-control ' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Link de Descarga']) }}
+            {!! $errors->first('link_download', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
             {{ Form::label('image') }}
             {{ Form::file('image', $product->image, ['accept' => 'image/*','class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image']) }}
             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}

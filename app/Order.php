@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\orderProduct;
 
 /**
  * Class Order
  *
  * @property $id
  * @property $user_id
- * @property $products
  * @property $total
  * @property $phone
  * @property $street
@@ -32,7 +32,6 @@ class Order extends Model
     
     static $rules = [
 		'user_id' => 'required',
-		'products' => 'required',
 		'total' => 'required',
 		'phone' => 'required',
 		'street' => 'required',
@@ -53,8 +52,17 @@ class Order extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','products','total','phone','street','num','colonia','city','state','postcode','country','paymentmethod','status'];
+    protected $fillable = ['user_id','total','phone','street','num','colonia','city','state','postcode','country','paymentmethod','status'];
 
-
+	/**
+	 * Get all of the orderProducts for the Order
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	
+	 public function orderProducts()
+	{	
+		return $this->hasMany(Orderproduct::class);
+	}
 
 }

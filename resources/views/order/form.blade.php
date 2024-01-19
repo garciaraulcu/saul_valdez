@@ -6,11 +6,7 @@
             {{ Form::text('user_id', $order->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
             {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('products') }}
-            {{ Form::textarea('products', $order->products, ['class' => 'form-control' . ($errors->has('products') ? ' is-invalid' : ''), 'placeholder' => 'Products']) }}
-            {!! $errors->first('products', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+
         <div class="form-group">
             {{ Form::label('total') }}
             {{ Form::text('total', $order->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total']) }}

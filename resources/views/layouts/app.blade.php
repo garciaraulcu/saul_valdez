@@ -98,10 +98,10 @@
 
 <body style="background-color: #f2f2f2">
     <div>
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm " style="background-color:darkblue; ">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm " style="background-color:darkblue;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: #FFFFFF">
-                    MySite.com
+                    <b>SVTUMOD</b>
                 </a>
 
                 <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
@@ -126,8 +126,8 @@
                             @else
                             class="text-black btn btn-warning  nav-link"
                             @endif 
-                            id="myBtn" style="color: #FFFFFF">
-                               Cart <i  class="bi bi-cart-fill"></i>
+                            id="myBtn" style="color: #FFFFFF;">
+                                <i  class="bi bi-cart-fill"></i>
                                 <b>{{ Cart::getTotalQuantity() }}</b>
                             </a>
                         </li>
@@ -136,11 +136,7 @@
                                 Tienda
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/home" class="btn nav-link" style="color: #FFFFFF">
-                                Mi Perfil
-                            </a>
-                        </li>
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -162,6 +158,10 @@
 
                                 <div style="background-color: darkblue" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     
+                                    <a style="color: #FFFFFF; background-color:darkblue" class="dropdown-item" href="{{ route('home') }}">
+                                        <i class="fa fa-user"></i>
+                                        Mi Perfil
+                                    </a>
                                     <a style="color: #FFFFFF; background-color:darkblue" class="dropdown-item" href="{{ route('changue-password') }}">
                                         <i class="fa fa-lock"></i>
                                         Cambiar Contraseña

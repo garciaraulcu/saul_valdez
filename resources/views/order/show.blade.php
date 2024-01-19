@@ -4,7 +4,6 @@
     {{ $order->name ?? 'Show Order' }}
 @endsection
 @section('content')
-
     @if ($order->user_id === Auth::user()->id || Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
         <section class="content container">
             <div class="row">
@@ -27,80 +26,58 @@
 
                                 <form action="{{ route('print', $order->id) }}" method="POST" target="_blank">
                                     @csrf
-                                    <button type="submit" class="btn-primary w3-hide-small" style="float: right"><i
-                                            style="font-size: 15px" class="bi bi-filetype-pdf"></i> Guardar PDF</button>
+                                    <!--<button type="submit" class="btn-primary w3-hide-small" style="float: right"><i
+                                            style="font-size: 15px" class="bi bi-filetype-pdf"></i> 
+                                            Guardar PDF
+                                    </button>-->
                                 </form>
 
                                 <h6>
                                     {{ Carbon\Carbon::parse($order->created_at, 'UTC')->timezone('America/Mexico_City')->isoFormat('LLLL') }}
                                 </h6>
                             </div>
-                            <div class="form-group">
-                                {!! $order->products !!}
-                            </div>
                             <!--<h1>Codigo QR</h1>
                                 <div class=" text-center">
                                     {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate(Request::url()) !!}
                                     <p>Scan me to return to the original page.</p>
                                 </div>-->
+
                             <hr>
-
-                            <div class="row">
-                                <div class="container col-md">
-                                    <center>
-                                        <h5>User Information</h5>
-                                    </center>
-
-
-                                    <div class="">
-                                        <strong>Name:</strong>
-                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : 'No Existe Ususario' }}
-                                    </div>
-                                    <div class="">
-                                        <strong>Phone:</strong>
-                                        {{ $order->phone }}
-                                    </div>
-                                    <div class="">
-                                        <strong>Email:</strong>
-                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->email : 'No Existe Correo de Ususario' }}
-                                    </div>
-                                    <br>
+                            <div class="container">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <th>id</th>
+                                            <th>Productos</th>
+                                            <th>Precio</th>
+                                            <th>Desarga</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($orderResume as $item)
+                                                <tr>
+                                                    <td>{{ $item->id_products }}</td>
+                                                    <td>{{ App\Product::find($item->id_products)->name }}</td>
+                                                    <td>$ {{ App\Product::find($item->id_products)->price }} MXN</td>
+                                                    <td>
+                                                        @if ($order->status === "Entregado")
+                                                        <a href="{{ App\Product::find($item->id_products)->link_download }}" target="_blank" class="btn btn-secondary">
+                                                            Descargar <i class="fa fa-download"></i>
+                                                        </a>
+                                                        @else
+                                                            Pendiente
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td>-</td>
+                                                <td>Total</td>
+                                                <td><b>$ {{ $order->total }} MXN</b></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class=" container col-md">
-                                    <center>
-                                        <h5>Direccion</h5>
-                                    </center>
-
-                                    <div class="">
-                                        <strong>Street: </strong>
-                                        {{ $order->street }}
-                                    </div>
-                                    <div class="">
-                                        <strong>Num:</strong>
-                                        {{ $order->num }}
-                                    </div>
-                                    <div class="">
-                                        <strong>Colonia: </strong>
-                                        {{ $order->colonia }}
-                                    </div>
-                                    <div class="">
-                                        <strong>City: </strong>
-                                        {{ $order->city }}
-                                    </div>
-                                    <div class="">
-                                        <strong>State: </strong>
-                                        {{ $order->state }}
-                                    </div>
-                                    <div class="">
-                                        <strong>Postcode: </strong>
-                                        {{ $order->postcode }}
-                                    </div>
-                                    <div class="">
-                                        <strong>Country: </strong>
-                                        {{ $order->country }}
-                                    </div>
-                                </div>
-
                             </div>
                             <hr>
                             <div class="form-group">
@@ -112,14 +89,13 @@
                                 {{ $order->paymentmethod }}
 
                             </div>
-
                             <hr>
                             <div class="form-group">
 
                                 @switch($order->status)
                                     @case('Entregado')
-                                        <div class="container p-3" style="background-color: blueviolet; color:#fff">
-                                            <h4>Hemos Habilitado la descarga de tus productos</h4>
+                                        <div class="container p-3" >
+                                            <h4 class="bg-primary p-3 text-white">Hemos Habilitado la descarga de tus productos</h4>
 
                                             <p>
                                                 Ya puedes descargar tus productos en la tabla de este resumen.
@@ -219,7 +195,64 @@
                                         </div>
                                 @endswitch
                             </div>
+                            <hr>
+                            <div class="row">
+                                <div class="container col-md">
+                                    <center>
+                                        <h5>User Information</h5>
+                                    </center>
 
+
+                                    <div class="">
+                                        <strong>Name:</strong>
+                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : 'No Existe Ususario' }}
+                                    </div>
+                                    <div class="">
+                                        <strong>Phone:</strong>
+                                        {{ $order->phone }}
+                                    </div>
+                                    <div class="">
+                                        <strong>Email:</strong>
+                                        {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->email : 'No Existe Correo de Ususario' }}
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class=" container col-md">
+                                    <center>
+                                        <h5>Direccion</h5>
+                                    </center>
+
+                                    <div class="">
+                                        <strong>Street: </strong>
+                                        {{ $order->street }}
+                                    </div>
+                                    <div class="">
+                                        <strong>Num:</strong>
+                                        {{ $order->num }}
+                                    </div>
+                                    <div class="">
+                                        <strong>Colonia: </strong>
+                                        {{ $order->colonia }}
+                                    </div>
+                                    <div class="">
+                                        <strong>City: </strong>
+                                        {{ $order->city }}
+                                    </div>
+                                    <div class="">
+                                        <strong>State: </strong>
+                                        {{ $order->state }}
+                                    </div>
+                                    <div class="">
+                                        <strong>Postcode: </strong>
+                                        {{ $order->postcode }}
+                                    </div>
+                                    <div class="">
+                                        <strong>Country: </strong>
+                                        {{ $order->country }}
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
