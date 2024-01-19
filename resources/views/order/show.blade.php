@@ -59,7 +59,7 @@
                                                     <td>{{ App\Product::find($item->id_products)->name }}</td>
                                                     <td>$ {{ App\Product::find($item->id_products)->price }} MXN</td>
                                                     <td>
-                                                        @if ($order->status === "Entregado")
+                                                        @if ($order->status === "Pagado")
                                                         <a href="{{ App\Product::find($item->id_products)->link_download }}" target="_blank" class="btn btn-secondary">
                                                             Descargar <i class="fa fa-download"></i>
                                                         </a>
@@ -93,7 +93,7 @@
                             <div class="form-group">
 
                                 @switch($order->status)
-                                    @case('Entregado')
+                                    @case('Pagado')
                                         <div class="container p-3" >
                                             <h4 class="bg-primary p-3 text-white">Hemos Habilitado la descarga de tus productos</h4>
 

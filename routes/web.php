@@ -28,6 +28,10 @@ use App\Http\Controllers\CartController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('login');
+});
 
 Auth::routes();
 

@@ -15,7 +15,7 @@
             </div>
             <div class="form-group col-6">
                 {{ Form::label('cantidad') }}
-                {{ Form::text('cantidad', $product->cantidad, ['class' => 'form-control ' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
+                {{ Form::number('cantidad', $product->cantidad, ['class' => 'form-control ' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
                 {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="form-group col-6">

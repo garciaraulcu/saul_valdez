@@ -23,6 +23,9 @@
         color: #222;
         border: 1px solid black;
     }
+    .hr{
+        border-top: 1px solid black;
+    }
 
 </style>
     <main>
@@ -53,7 +56,7 @@
                             <th>Actualizar_Cantidad</th>
                             <th>Precio</th>
                             <th> Cantidad</th>
-                            <th> Subtotal</th>
+                            <!--<th> Subtotal</th>-->
                             <th> Action </th>
                         </tr>
                     </thead>
@@ -87,7 +90,7 @@
                                 </td>
                                 <td>$ {{ $item->price }} </td>
                                 <td> x{{ $item->quantity }} </td>
-                                <td>$ {{ $item->quantity*$item->price }} </td>
+                                <!--<td>$ {{ $item->quantity*$item->price }} </td>-->
                                 <td>
                                     <form action="{{ route('cart.remove') }}" method="POST">
                                         @csrf
@@ -102,17 +105,15 @@
 
                             </tr>
                         @endforeach
-                        <tr class="w3-hide-small w3-hide-medium">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><h5 class="float-right">Total: </h5></td>
+                        <tr class=" hr">
                             <td>
-                                <h5><b>  {{ Cart::getTotalquantity() }} </b> {{ Cart::getTotalquantity() > 1 ? "Articulos"  : "Articulo"}} </h5>
+                                  
                             </td>
-                            <td><h5><b> $ {{ Cart::getTotal() }} MXN</b></h5></td>
+                            <td>    </td>
+                            <td><b>Total: </b></td>
                             <td></td>
+                            <td><b> $ {{ Cart::getTotal() }} MXN</b></td>
+                            <td><b>  {{ Cart::getTotalquantity() }} </b> {{ Cart::getTotalquantity() > 1 ? "Articulos"  : "Articulo"}}</td>
                         </tr>                        
 
                     </tbody>
@@ -120,12 +121,7 @@
                 </table>
 
             </div>
-            <hr class="w3-hide-small">
             <br>
-            <div class="float-right w3-hide-large " >
-                <h5><b>Total: $ {{ Cart::getTotal() }} MXN</b></h5>
-                <h5><b> {{ Cart::getTotalquantity() }} </b> {{ Cart::getTotalquantity() > 1 ? "Articulos" : "Articulo"}}</h5>
-            </div>
             <a href="{{ route('checkout') }}" class="btn btn-primary">
                 Confirmar Pedido
             </a>

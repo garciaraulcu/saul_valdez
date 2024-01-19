@@ -59,7 +59,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('status') }}
-            {{ Form::select('status', ['Entregado' => 'Entregado', 'Realizado' => 'Realizado','Pendiente de Pago' => 'Pendiente de Pago','En Envio' => 'En Envio','Cancelado' => 'Cancelado'], ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Status']) }}
+            {{ Form::select('status', ['Pagado' => 'Pagado', 'Realizado' => 'Realizado','Pendiente de Pago' => 'Pendiente de Pago','En Envio' => 'En Envio','Cancelado' => 'Cancelado'], ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Status']) }}
             {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
