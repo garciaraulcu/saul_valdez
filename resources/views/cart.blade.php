@@ -78,7 +78,7 @@
                                             <form action="{{ route('cart.update') }}" method="POST">
                                                 @csrf
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
-                                                    <input style="width: 70px" type="number" name="quantity"       
+                                                    <input type="number" name="quantity"       
                                                         value="{{ $item->quantity }}" min="1" max="{{ App\Product::find($item->id)->cantidad }}" />
                                                         <button class="btn btn-primary w3-hide-large w3-hide-medium" type="submit" style="width: 40px">
                                                             <i class="fa fa-refresh"></i>

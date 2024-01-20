@@ -77,8 +77,8 @@ class OrderController extends Controller
         Mail::send(new Correo($to, $subject, $content, $id));*/
 
         CartController::clearAllCart();
-
-        return redirect()->route('home');
+        $this->show($order->id);
+        return redirect()->route('orders.show',$order->id);
     }
 
     /**
