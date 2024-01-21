@@ -130,6 +130,7 @@
                                             @if ($order->paymentmethod === 'Efectivo')
                                                 <div class="container card-body card" style="background-color: #f2f2f2">
                                                     <h4><b>Pago en Efectivo</b></h4>
+
                                                     <p>
                                                         Realiza el Deposito en tiendas de conveniencia como:
                                                     <ul>
@@ -165,6 +166,9 @@
                                             @if ($order->paymentmethod === 'Efectivo')
                                                 <div class="container card-body card" style="background-color: #f2f2f2">
                                                     <h4><b>Pago en Efectivo</b></h4>
+                                                    <form action="{{ route('pago-oxxo') }}" method="post">
+                                                        <button type="submit">Porst</button>
+                                                    </form>
                                                     <p>
                                                         Realiza el Deposito en tiendas de conveniencia como:
                                                     <ul>
