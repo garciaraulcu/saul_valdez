@@ -35,7 +35,7 @@
                                             </div>
                                         @break
 
-                                        @case('Entregado')
+                                        @case('Pagado')
                                             <div
                                                         style="
                                             background-color:goldenrod; 

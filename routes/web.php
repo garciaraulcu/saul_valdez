@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PaymentController;
+
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ModelHasRoleController;
@@ -106,4 +107,9 @@ Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear'
 
 /* COnekta rutes */
 
-Route::post('/procesar-pago-oxxo', [PagoController::class, 'procesarPagoOXXO'])->name('pago-oxxo');
+Route::get('gateway', [PaymentController::class, 'gateway'])->name('gateway');
+Route::post('session/{id}', [PaymentController::class, 'session'])->name('session');
+Route::get('success/{id}', [PaymentController::class, 'success'])->name('success');
+
+
+

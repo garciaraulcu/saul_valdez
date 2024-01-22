@@ -35,9 +35,9 @@
                     <table class="table table-striped table-hover">
                         <thead class="thead">
                             <tr>
-                                <th>No</th>
+                                <th>Pedido</th>
                                 
-                                <th>User Id</th>
+                                <th>User</th>
                                 <th>Total</th>
                                 <th>Phone</th>
                                 <th>Email</th>
@@ -50,7 +50,7 @@
                         <tbody>
                             @foreach ($orders as $order)
                                 <tr>
-                                    <td>#{{ ++$i }}</td>
+                                    <td>{{ $order->id }}</td>
                                     
                                     <td>{{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : "No Existe" }}</td>
                                     <td>$ {{ $order->total }} MXN</td>

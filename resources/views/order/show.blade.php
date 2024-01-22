@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="float-left">
-                                <span class="card-title">Show Order</span>
+                                <span class="card-title">Información de Pedido</span>
                             </div>
                             <div class="float-right">
                                 @can('delete')
@@ -27,9 +27,9 @@
                                 <form action="{{ route('print', $order->id) }}" method="POST" target="_blank">
                                     @csrf
                                     <!--<button type="submit" class="btn-primary w3-hide-small" style="float: right"><i
-                                            style="font-size: 15px" class="bi bi-filetype-pdf"></i> 
-                                            Guardar PDF
-                                    </button>-->
+                                                style="font-size: 15px" class="bi bi-filetype-pdf"></i>
+                                                Guardar PDF
+                                        </button>-->
                                 </form>
 
                                 <h6>
@@ -37,65 +37,23 @@
                                 </h6>
                             </div>
                             <!--<h1>Codigo QR</h1>
-                                <div class=" text-center">
-                                    {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate(Request::url()) !!}
-                                    <p>Scan me to return to the original page.</p>
-                                </div>-->
+                                    <div class=" text-center">
+                                        {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate(Request::url()) !!}
+                                        <p>Scan me to return to the original page.</p>
+                                    </div>-->
 
-                            <hr>
-                            <div class="container">
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <th>id</th>
-                                            <th>Productos</th>
-                                            <th>Precio</th>
-                                            <th>Desarga</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($orderResume as $item)
-                                                <tr>
-                                                    <td>{{ $item->id_products }}</td>
-                                                    <td>{{ App\Product::find($item->id_products)->name }}</td>
-                                                    <td>$ {{ App\Product::find($item->id_products)->price }} MXN</td>
-                                                    <td>
-                                                        @if ($order->status === "Pagado")
-                                                        <a href="{{ App\Product::find($item->id_products)->link_download }}" target="_blank" class="btn btn-secondary">
-                                                            Descargar <i class="fa fa-download"></i>
-                                                        </a>
-                                                        @else
-                                                            Pendiente
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            <tr>
-                                                <td>-</td>
-                                                <td>Total</td>
-                                                <td><b>$ {{ $order->total }} MXN</b></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <hr>
+                            
                             <div class="form-group">
                                 <strong>Status:</strong>
                                 {{ $order->status }}
                             </div>
-                            <div class="form-group">
-                                <strong>Forma de Pago:</strong>
-                                {{ $order->paymentmethod }}
 
-                            </div>
-                            <hr>
                             <div class="form-group">
 
                                 @switch($order->status)
                                     @case('Pagado')
-                                        <div class="container p-3" >
-                                            <h4 class="bg-primary p-3 text-white">Hemos Habilitado la descarga de tus productos</h4>
+                                        <div class="container p-3">
+                                            <h4 class="bg-primary p-3 text-white">Gracias por tu Compra!</h4>
 
                                             <p>
                                                 Ya puedes descargar tus productos en la tabla de este resumen.
@@ -165,19 +123,22 @@
                                         <div class="container">
                                             @if ($order->paymentmethod === 'Efectivo')
                                                 <div class="container card-body card" style="background-color: #f2f2f2">
-                                                    <h4><b>Pago en Efectivo</b></h4>
-                                                    <form action="{{ route('pago-oxxo') }}" method="post">
-                                                        <button type="submit">Porst</button>
-                                                    </form>
-                                                    <p>
-                                                        Realiza el Deposito en tiendas de conveniencia como:
+                                                    <h4><b>Formas de Pago:</b></h4>
                                                     <ul>
-                                                        <li>OXXO</li>
-                                                        <li>Farmacias Similares</li>
-                                                        <li>7 Eleven</li>
+                                                        <li><h5>Tarjeta de Credito/Debito</h5></li>
+                                                        <li><h5>OXXO</h5></li>
+
                                                     </ul>
 
-                                                    </p>
+                                                    <form action="{{ route('session',$order->id) }}" method="POST">
+
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        
+                                                        <button class="btn btn-success" type="submit" >
+                                                            <i class="fa fa-money"></i> Realizar Pago
+                                                        </button>
+                                                    </form>
+                                                    
                                                 </div>
                                             @else
                                                 <div class="container card-body card">
@@ -198,6 +159,44 @@
                                             @endif
                                         </div>
                                 @endswitch
+                            </div>
+                            <hr>
+                            <div class="container">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <th>id</th>
+                                            <th>Productos</th>
+                                            <th>Precio</th>
+                                            <th>Desarga</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($orderResume as $item)
+                                                <tr>
+                                                    <td>{{ $item->id_products }}</td>
+                                                    <td>{{ App\Product::find($item->id_products)->name }}</td>
+                                                    <td>$ {{ App\Product::find($item->id_products)->price }} MXN</td>
+                                                    <td>
+                                                        @if ($order->status === 'Pagado')
+                                                            <a href="{{ App\Product::find($item->id_products)->link_download }}"
+                                                                target="_blank" class="btn btn-secondary">
+                                                                Descargar <i class="fa fa-download"></i>
+                                                            </a>
+                                                        @else
+                                                            Pendiente
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td>-</td>
+                                                <td>Total</td>
+                                                <td><b>$ {{ $order->total }} MXN</b></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <hr>
                             <div class="row">
