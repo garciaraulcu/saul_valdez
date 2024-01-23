@@ -114,8 +114,8 @@
                                     @default
                                         <div class="container">
                                             @if ($order->paymentmethod === 'Efectivo')
-                                                <div class="container card-body card bg-danger" style="background-color: #f2f2f2">
-                                                    <h3 class="text-white">Pendiente de Pago</h3>
+                                                <div class="container card-body card bg-secondary" style="background-color: #f2f2f2">
+                                                    <h4 class="text-white"><b>Pendiente de Pago</b></h>
                                                     
                                                 </div>
                                             @else
@@ -181,18 +181,18 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="">
-                                        @if ($order->status != "Pagado")
-                                        <form action="{{ route('session',$order->id) }}" method="POST">
+                                </div>
+                                <div class="">
+                                    @if ($order->status != "Pagado")
+                                    <form action="{{ route('session',$order->id) }}" method="POST">
 
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            
-                                            <button class="btn btn-primary" type="submit" >
-                                                <b>Realizar Pago</b>
-                                            </button>
-                                        </form>
-                                        @endif
-                                    </div>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        
+                                        <button class="btn btn-primary" type="submit" >
+                                            <b>Realizar Pago</b>
+                                        </button>
+                                    </form>
+                                    @endif
                                 </div>
                             </div>
                             <hr>
