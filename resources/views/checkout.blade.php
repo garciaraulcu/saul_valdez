@@ -9,7 +9,7 @@
     </style>
 
     <div class="container">
-        <h2 style="color: blueviolet;">Checkout </h2>
+        <h2 style="color: blueviolet;">Información de Usuario </h2>
         <br>
         @if (Auth::check())
             @if (\Cart::getTotalquantity() > 0)
@@ -28,51 +28,46 @@
                                     <div class="form-group">
                                         <div class="form-row container">
                                             <div class="form-group col-md-7">
-                                                <label for="street">Calle</label>
-                                                <input name="street" required class="form-control" id="inputCity">
+                                                <!--<label for="street">Calle</label>-->
+                                                <input type="hidden" name="street" required class="form-control" id="inputCity" value="null">
                                             </div>
                                             <div class="form-group col-md-5">
-                                                <label for="num">Numero</label>
-                                                <input name="num" required class="form-control" id="inputCity">
+                                                <!--<label for="num">Numero</label>-->
+                                                <input type="hidden" name="num" required class="form-control" id="inputCity" value="null">
                                             </div>
-                                            <div class="form-group col-md-7">
-                                                <label for="colonia">Colonia</label>
-                                                <input name="colonia" required class="form-control" id="inputCity">
-                                            </div>
+                                                <input type="hidden" name="colonia" required class="form-control" id="inputCity" value="null">
                                             <div class="form-group col-md-5">
-                                                <label for="city">Ciudad / Municipio</label>
+                                                <label for="city">Ciudad </label>
                                                 <input name="city" required class="form-control" id="inputCity">
                                             </div>
-                                            <div class="form-group col-md-7">
-                                                <label for="state">Estado</label>
-                                                <input name="state" required class="form-control">
-                                            </div>
+                                                <!--<label for="state">Estado</label>-->
+                                                <input type="hidden" name="state" required class="form-control" value="null">
                                             <div class="form-group col-md-5">
                                                 <label for="country">Pais</label>
-                                                <input name="country" id="pais" required placeholder="Pais"
+                                                <input name="country" id="pais"
                                                     class="form-control">
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label for="postcode">Codigo Postal</label>
-                                                <input name="postcode" required class="form-control" id="inputZip"
-                                                    placeholder="Ej. 90210">
+                                                <!--<label for="postcode">Codigo Postal</label>-->
+                                                <input type="hidden" name="postcode" required class="form-control" id="inputZip"
+                                                    placeholder="Ej. 90210" value="null">
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label for="phpne">Telefono *</label>
-                                                <input name="phone" required class="form-control" id="phone">
+                                                <!--<label for="phpne">Telefono *</label>-->
+                                                <input type="hidden" name="phone" required class="form-control" id="phone" value="null">
                                             </div>
                                         </div>
                                     </div>
 
-
-                                    <p><b>Selecciona un Metodo de Pago</b></p>
+                                    <input type="hidden" name="paymentmethod" value="Efectivo">    
+                                    <!--<p><b>Selecciona un Metodo de Pago</b></p>
                                     <div class="form-group">
                                         <label for="payment">Formas de Pago</label>
                                         <select name="paymentmethod" id="payment" required>
                                             <option value="Efectivo">Efectivo</option>
                                             <option value="Transferencia">Transferencia</option>
                                         </select>
-                                    </div>
+                                    </div>-->
 
                                     <br>
                                     <div class="form-group">

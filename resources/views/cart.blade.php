@@ -122,7 +122,7 @@
 
             </div>
             <br>
-            <a href="{{ route('checkout') }}" class="btn btn-primary">
+            <a href="{{ route('user-info') }}" class="btn btn-primary">
                 Confirmar Pedido
             </a>
         </div>

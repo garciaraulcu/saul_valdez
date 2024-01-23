@@ -96,7 +96,7 @@ Route::resource('categorias', CategoriaController::class)->middleware('auth');
 //************************ Cart Routes */
 
 
-Route::get('/checkout', [CartController::class, 'checkOut'])->name('checkout');
+Route::get('/user-info', [CartController::class, 'checkOut'])->name('user-info');
 
 
 Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');

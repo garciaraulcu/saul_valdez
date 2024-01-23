@@ -24,14 +24,6 @@
                             <div class="form-group">
                                 <h1>Pedido: #{{ $order->id }}</h1>
 
-                                <form action="{{ route('print', $order->id) }}" method="POST" target="_blank">
-                                    @csrf
-                                    <!--<button type="submit" class="btn-primary w3-hide-small" style="float: right"><i
-                                                style="font-size: 15px" class="bi bi-filetype-pdf"></i>
-                                                Guardar PDF
-                                        </button>-->
-                                </form>
-
                                 <h6>
                                     {{ Carbon\Carbon::parse($order->created_at, 'UTC')->timezone('America/Mexico_City')->isoFormat('LLLL') }}
                                 </h6>
@@ -122,22 +114,8 @@
                                     @default
                                         <div class="container">
                                             @if ($order->paymentmethod === 'Efectivo')
-                                                <div class="container card-body card" style="background-color: #f2f2f2">
-                                                    <h4><b>Formas de Pago:</b></h4>
-                                                    <ul>
-                                                        <li><h5>Tarjeta de Credito/Debito</h5></li>
-                                                        <li><h5>OXXO</h5></li>
-
-                                                    </ul>
-
-                                                    <form action="{{ route('session',$order->id) }}" method="POST">
-
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        
-                                                        <button class="btn btn-success" type="submit" >
-                                                            <i class="fa fa-money"></i> Realizar Pago
-                                                        </button>
-                                                    </form>
+                                                <div class="container card-body card bg-danger" style="background-color: #f2f2f2">
+                                                    <h3 class="text-white">Pendiente de Pago</h3>
                                                     
                                                 </div>
                                             @else
@@ -162,6 +140,13 @@
                             </div>
                             <hr>
                             <div class="container">
+                                <!--<form action="{{ route('print', $order->id) }}" method="POST" target="_blank">
+                                    @csrf
+                                    <button type="submit" class="btn-primary w3-hide-small" style="float: right"><i
+                                                style="font-size: 15px" class="bi bi-filetype-pdf"></i>
+                                                Guardar PDF
+                                    </button>
+                                </form>-->
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
@@ -174,11 +159,11 @@
                                             @foreach ($orderResume as $item)
                                                 <tr>
                                                     <td>{{ $item->id_products }}</td>
-                                                    <td>{{ App\Product::find($item->id_products)->name }}</td>
-                                                    <td>$ {{ App\Product::find($item->id_products)->price }} MXN</td>
+                                                    <td>{{ App\Product::find($item->id_products) ? App\Product::find($item->id_products)->name : "Articulo Eliminado" }}</td>
+                                                    <td>{{ App\Product::find($item->id_products) ? App\Product::find($item->id_products)->price . "MXN" : "Articulo Eliminado" }}</td>
                                                     <td>
                                                         @if ($order->status === 'Pagado')
-                                                            <a href="{{ App\Product::find($item->id_products)->link_download }}"
+                                                            <a href="{{ App\Product::find($item->id_products) ? App\Product::find($item->id_products)->link_download : "" }}"
                                                                 target="_blank" class="btn btn-secondary">
                                                                 Descargar <i class="fa fa-download"></i>
                                                             </a>
@@ -196,6 +181,18 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <div class="">
+                                        @if ($order->status != "Pagado")
+                                        <form action="{{ route('session',$order->id) }}" method="POST">
+
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            
+                                            <button class="btn btn-primary" type="submit" >
+                                                <b>Realizar Pago</b>
+                                            </button>
+                                        </form>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <hr>
@@ -210,10 +207,10 @@
                                         <strong>Name:</strong>
                                         {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->name : 'No Existe Ususario' }}
                                     </div>
-                                    <div class="">
+                                    <!--<div class="">
                                         <strong>Phone:</strong>
                                         {{ $order->phone }}
-                                    </div>
+                                    </div>-->
                                     <div class="">
                                         <strong>Email:</strong>
                                         {{ App\Models\User::find($order->user_id) ? App\Models\User::find($order->user_id)->email : 'No Existe Correo de Ususario' }}
@@ -225,7 +222,7 @@
                                         <h5>Direccion</h5>
                                     </center>
 
-                                    <div class="">
+                                    <!--<div class="">
                                         <strong>Street: </strong>
                                         {{ $order->street }}
                                     </div>
@@ -236,19 +233,19 @@
                                     <div class="">
                                         <strong>Colonia: </strong>
                                         {{ $order->colonia }}
-                                    </div>
+                                    </div>-->
                                     <div class="">
                                         <strong>City: </strong>
                                         {{ $order->city }}
                                     </div>
-                                    <div class="">
+                                    <!--<div class="">
                                         <strong>State: </strong>
                                         {{ $order->state }}
                                     </div>
                                     <div class="">
                                         <strong>Postcode: </strong>
                                         {{ $order->postcode }}
-                                    </div>
+                                    </div>-->
                                     <div class="">
                                         <strong>Country: </strong>
                                         {{ $order->country }}

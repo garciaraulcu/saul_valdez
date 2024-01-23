@@ -210,9 +210,11 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="container text-white">
-                        <small>Hecho en México, 2022.</small>
-                        <br>
-                        <small>Sitio Web Administrado por: T-Developers.com</small>
+                        <p><b>Formas de Pago:</b></p>
+                        <ul>
+                            <li>Tarjeta VISA / Master Card</li>
+                            <li>Efectivo - OXXO</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-3">
